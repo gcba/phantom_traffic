@@ -2,8 +2,25 @@ function log(msg) {
     var d = (new Date).toString();
     console.log(d + ' ' + msg);
     if (msg == 'Mapa cargado') {
-        var filename = Date.now().toString() + '.gif';
-        page.render(filename, {format: 'gif', quality: '100'});
+        var filename = './capturas/' + Date.now().toString();
+        page.render(filename + '._001.jpeg', {format: 'jpeg', quality: '1'});
+        page.render(filename + '._025.jpeg', {format: 'jpeg', quality: '25'});
+        page.render(filename + '._050.jpeg', {format: 'jpeg', quality: '50'});
+        page.render(filename + '._075.jpeg', {format: 'jpeg', quality: '75'});
+        page.render(filename + '._100.jpeg', {format: 'jpeg', quality: '100'});
+
+        page.render(filename + '._001.gif', {format: 'gif', quality: '1'});
+        page.render(filename + '._025.gif', {format: 'gif', quality: '25'});
+        page.render(filename + '._050.gif', {format: 'gif', quality: '50'});
+        page.render(filename + '._075.gif', {format: 'gif', quality: '75'});
+        page.render(filename + '._100.gif', {format: 'gif', quality: '100'});
+
+        page.render(filename + '._001.png', {format: 'png', quality: '1'});
+        page.render(filename + '._025.png', {format: 'png', quality: '25'});
+        page.render(filename + '._050.png', {format: 'png', quality: '50'});
+        page.render(filename + '._075.png', {format: 'png', quality: '75'});
+        page.render(filename + '._100.png', {format: 'png', quality: '100'});
+
         phantom.exit();
     }
 }
@@ -18,6 +35,11 @@ setTimeout(function() {
 }, 60*1000);
 
 function renderMap() {
+    /*
+    var s = document.createElement('script');
+    s.src = 'https://maps.google.com/maps/api/js?sensor=false';
+    document.head.appendChild(s);
+    */
     console.log('Insertando mapa');
     var mapDiv = document.createElement('div');
     mapDiv.id = "map";
