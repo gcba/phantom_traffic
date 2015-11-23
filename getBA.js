@@ -2,25 +2,8 @@ function log(msg) {
     var d = (new Date).toString();
     console.log(d + ' ' + msg);
     if (msg == 'Mapa cargado') {
-        var filename = './capturas/' + Date.now().toString();
-        page.render(filename + '._001.jpeg', {format: 'jpeg', quality: '1'});
-        page.render(filename + '._025.jpeg', {format: 'jpeg', quality: '25'});
-        page.render(filename + '._050.jpeg', {format: 'jpeg', quality: '50'});
-        page.render(filename + '._075.jpeg', {format: 'jpeg', quality: '75'});
-        page.render(filename + '._100.jpeg', {format: 'jpeg', quality: '100'});
-
-        page.render(filename + '._001.gif', {format: 'gif', quality: '1'});
-        page.render(filename + '._025.gif', {format: 'gif', quality: '25'});
-        page.render(filename + '._050.gif', {format: 'gif', quality: '50'});
-        page.render(filename + '._075.gif', {format: 'gif', quality: '75'});
-        page.render(filename + '._100.gif', {format: 'gif', quality: '100'});
-
-        page.render(filename + '._001.png', {format: 'png', quality: '1'});
-        page.render(filename + '._025.png', {format: 'png', quality: '25'});
-        page.render(filename + '._050.png', {format: 'png', quality: '50'});
-        page.render(filename + '._075.png', {format: 'png', quality: '75'});
-        page.render(filename + '._100.png', {format: 'png', quality: '100'});
-
+        var filename = './BA/' + Date.now().toString();
+        page.render(filename + '.gif', {format: 'gif', quality: '100'});
         phantom.exit();
     }
 }

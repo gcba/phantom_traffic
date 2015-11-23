@@ -1,0 +1,32 @@
+{
+   "name":"La Plata",
+   "coordinates":{
+                    "longitude": -34.921001,
+                    "latitude" : -57.954445
+                  }
+                          
+                ,
+    "zoom"      : 16,
+    "canvas"    : {
+                    "width"  : 5400, 
+                    "height" : 5400
+                    }
+                  ,
+    "render"    : {
+                    "str_folder"    : "LP",
+                    "out_format"    : "gif",
+                    "quality": 100
+                    }
+                    
+                  ,
+    "obs_time"  :{     
+                    "obs_per_hour"  : 30,
+                    "start"         : "2015-11-19T00:00:00-03:00",
+                    "end"           : "2015-11-30T00:00:00-03:00"
+                    },
+   "misc" :{
+            "state"  : "Buenos Aires",
+            "author" : "",
+            "other"  : ""
+         }
+}
