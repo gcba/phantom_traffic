@@ -40,7 +40,7 @@ def take_picts(cities):
     for city in cities:
         try:
             configs.log.add('INFO: Taking picts of %s' % city['name'])
-            city_pict_process = subprocess.Popen([
+            subprocess.Popen([
                 'phantomjs',
                 '--ignore-ssl-errors=true',
                 'get_maps.js',
@@ -54,7 +54,6 @@ def take_picts(cities):
                 str(city['lon']),
                 city['name']
             ])
-            city_pict_process.wait()
         except Exception as e:
             configs.log.add('ERROR: %s \n\tSomething is not going well... ' % str(e))
 

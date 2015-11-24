@@ -10,14 +10,18 @@ var city_lat = args[7];
 var city_lon = args[8];
 var city_name = args[9];
 
-function log(msg) {
+function pretty_log(msg) {
     var d = (new Date).toString();
-    console.log(d + ' ' + msg);
+    console.log(d + ' ' + city_name + ': ' + msg);
+}
+
+function log(msg) {
+    pretty_log(msg);
     if (msg == 'Mapa cargado!') {
-        console.log('Renderizando mapa de '+ city_name);
+        pretty_log('Renderizando mapa');
         var filename = './' + city_folder + '/' + Date.now().toString() + '.' + img_format;
         page.render(filename, {format: img_format, quality: img_quality});
-        console.log('DONE!');
+        pretty_log('DONE!');
         phantom.exit();
     }
 }
