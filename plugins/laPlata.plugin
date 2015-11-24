@@ -1,8 +1,8 @@
 {
     "name": "La Plata",
     "coordinates": {
-        "latitude": -57.954445,
-        "longitude": -34.921001
+        "latitude": -34.921001,
+        "longitude": -57.954445
     },
     "zoom": 16,
     "canvas": {
