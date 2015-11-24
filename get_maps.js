@@ -1,29 +1,29 @@
-var args      = require('system').args;
+var args = require('system').args;
 
-var m_folder  = args[1];
-var m_width   = args[2];
-var m_height  = args[3];
-var m_zoom    = args[4];
-var m_format  = args[5];
-var m_quality = args[6];
-var m_lat     = args[7];
-var m_lon     = args[8];
-var m_name    = args[9]
+var city_folder = args[1];
+var city_width = args[2];
+var city_height = args[3];
+var city_zoom = args[4];
+var img_format = args[5];
+var img_quality = args[6];
+var city_lat = args[7];
+var city_lon = args[8];
+var city_name = args[9];
 
 function log(msg) {
     var d = (new Date).toString();
     console.log(d + ' ' + msg);
     if (msg == 'Mapa cargado!') {
-        var filename = './'+m_folder+'/' + Date.now().toString();
-        console.log('Renderizando mapa de '+m_name)
-        page.render(filename + '.'+m_format, {format: m_format, quality: m_quality});
-        console.log('DONE!')
+        console.log('Renderizando mapa de '+ city_name);
+        var filename = './' + city_folder + '/' + Date.now().toString() + '.' + img_format;
+        page.render(filename, {format: img_format, quality: img_quality});
+        console.log('DONE!');
         phantom.exit();
     }
 }
 
 var page = require('webpage').create();
-page.viewportSize = { width: m_width, height: m_height};
+page.viewportSize = { width: city_width, height: city_height};
 page.onConsoleMessage = function (msg){ log(msg) };
 
 setTimeout(function() {
@@ -31,7 +31,7 @@ setTimeout(function() {
     phantom.exit();
 }, 60*1000);
 
-function renderMap(lat,lon,zoom) {
+function renderMap(lat, lon, zoom) {
     console.log('Insertando mapa...');
     var mapDiv = document.createElement('div');
     mapDiv.id = "map";
@@ -58,7 +58,7 @@ page.open('about:blank', function (status) {
         log('Abriendo pagina en blanco');
         page.includeJs(googleJs, function() {
             log('Lib de googlemaps cargada');
-            page.evaluate(renderMap,m_lat,m_lon, parseInt(m_zoom));
+            page.evaluate(renderMap, city_lat, city_lon, parseInt(city_zoom));
         });
     }
 });
