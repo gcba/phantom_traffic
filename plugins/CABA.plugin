@@ -1,27 +1,27 @@
 {
-   "name":"Buenos Aires",
-   "coordinates":{
-                    "latitude": -34.6191182,  
-                    "longitude" : -58.4396684      
-                },
-    "zoom"      : 15,
-    "canvas"    : {
-                    "width"  : 4400, 
-                    "height" : 5200
-                  },
-    "render"    : {
-                    "str_folder"    : "BA",
-                    "out_format"    : "gif",
-                    "quality": 100
-                  },
-    "obs_time"  :{      
-                    "obs_per_hour" : 30,
-                    "start"         : "2015-11-19T00:00:00-03:00",
-                    "end"           : "2015-11-30T00:00:00-03:00"
-                    },
-   "misc" :{
-            "state"  : "Buenos Aires",
-            "author" : "",
-            "other"  : ""
-         }
+    "name": "Buenos Aires",
+    "coordinates": {
+        "latitude": -34.6191182,
+        "longitude": -58.4396684
+    },
+    "zoom": 15,
+    "canvas": {
+        "width": 4400,
+        "height": 5200
+    },
+    "render": {
+        "str_folder": "BA",
+        "out_format": "gif",
+        "quality": 100
+    },
+    "obs_time": {
+        "obs_per_hour": 30,
+        "start": "2015-11-19T00:00:00-03:00",
+        "end": "2015-11-30T00:00:00-03:00"
+    },
+    "misc": {
+        "state": "Buenos Aires",
+        "author": "",
+        "other": ""
+    }
 }

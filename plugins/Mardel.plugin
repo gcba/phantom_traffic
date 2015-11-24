@@ -1,27 +1,27 @@
 {
-   "name":"Mar del Plata",
-   "coordinates":{
-                    "latitude": -37.985391,    
-                    "longitude" : -57.566383      
-                },
-    "zoom"      : 15,
-    "canvas"    : {
-                    "width"  : 5200, 
-                    "height" : 5200
-                  },
-    "render"    : {
-                    "str_folder"    : "MDP",
-                    "out_format"    : "gif  ",
-                    "quality": 100
-                  },
-    "obs_time"  :{      
-                    "obs_per_hour" : 30,
-                    "start"         : "2015-11-19T00:00:00-03:00",
-                    "end"           : "2015-11-30T00:00:00-03:00"
-                    },
-   "misc" :{
-            "state"  : "Buenos Aires",
-            "author" : "",
-            "other"  : ""
-         }
+    "name": "Mar del Plata",
+    "coordinates": {
+        "latitude": -37.985391,
+        "longitude": -57.566383
+    },
+    "zoom": 15,
+    "canvas": {
+        "width": 5200,
+        "height": 5200
+    },
+    "render": {
+        "str_folder": "MDP",
+        "out_format": "gif",
+        "quality": 100
+    },
+    "obs_time": {
+        "obs_per_hour": 30,
+        "start": "2015-11-19T00:00:00-03:00",
+        "end": "2015-11-30T00:00:00-03:00"
+    },
+    "misc": {
+        "state": "Buenos Aires",
+        "author": "",
+        "other": ""
+    }
 }
