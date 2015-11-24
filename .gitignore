@@ -1,5 +1,4 @@
 .idea
-capturas/*.png
-capturas/*.gif
-capturas/*.jpg
-capturas/*.jpeg
+img
+*.pyc
+*.log

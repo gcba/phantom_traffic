@@ -29,7 +29,7 @@ class log:
     def add(self, msg):
         lColor = self.ENDC
         now = datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')
-        filelog = "%s_%s_logs.txt" % (self.logSufix, self.SESSION)
+        filelog = "%s_%s.log" % (self.logSufix, self.SESSION)
         with open(filelog, 'a') as logFile:
             msgf = ">> [%s]: %s \n" % (now, msg)
             logFile.write(msgf)
