@@ -7,53 +7,55 @@ from confs import configs
 
 def load_plugins():
     cities = []
-    pfolder = "./%s" % configs.plugins_confs["folder"]
-    for file in os.listdir(pfolder):
-        if file.endswith(".%s" % configs.plugins_confs["ext"]):
-            with open('%s/%s' % (pfolder, file)) as plugin:
-                d = json.load(plugin)
-
-                c = {
-                    'name': d['name'],
-                    'lat':  d['coordinates']['latitude'],
-                    'lon':  d['coordinates']['longitude'],
-                    'width': d['canvas']['width'],
-                    'height': d['canvas']['height'],
-                    'zoom': d['zoom'],
-                    'times_per_hour': d['obs_time']['obs_per_hour'],
-                    'start_at': d['obs_time']['start'],
-                    'ends_at': d['obs_time']['end'],
-                    'dest_folder': d['render']['str_folder'],
-                    'format': d['render']['out_format'],
-                    'quality': d['render']['quality'],
+    plugin_folder = "./%s" % configs.plugins_confs["folder"]
+    for filename in os.listdir(plugin_folder):
+        if filename.endswith(".%s" % configs.plugins_confs["ext"]):
+            with open('%s/%s' % (plugin_folder, filename)) as plugin:
+                city_dict = json.load(plugin)
+                city = {
+                    'name': city_dict['name'],
+                    'lat':  city_dict['coordinates']['latitude'],
+                    'lon':  city_dict['coordinates']['longitude'],
+                    'width': city_dict['canvas']['width'],
+                    'height': city_dict['canvas']['height'],
+                    'zoom': city_dict['zoom'],
+                    'times_per_hour': city_dict['obs_time']['obs_per_hour'],
+                    'start_at': city_dict['obs_time']['start'],
+                    'ends_at': city_dict['obs_time']['end'],
+                    'dest_folder': city_dict['render']['str_folder'],
+                    'format': city_dict['render']['out_format'],
+                    'quality': city_dict['render']['quality'],
                 }
-            configs.log.add('INFO: \"%s\" plugin loaded...' % d['name'])
-            folder = './%s' % c['dest_folder']
+            configs.log.add('INFO: \"%s\" plugin loaded...' % city_dict['name'])
+            folder = './%s' % city['dest_folder']
             if not os.path.exists(folder):
                 os.mkdir(folder)
-            cities.append(c)
-    configs.log.add('INFO: %d Cities loaded!' % len(cities))
+            cities.append(city)
+    configs.log.add('INFO: %d cities loaded!' % len(cities))
     return cities
 
 
 def take_picts(cities):
-    for i in range(0, len(cities)):
+    for city in cities:
         try:
-            configs.log.add('INFO: Taking picts from: %s' % cities[i]['name'])
-            city_pict = subprocess.Popen(
-                ['phantomjs', '--ignore-ssl-errors=true', 'get_maps.js', cities[i]['dest_folder'],
-                 str(cities[i]['width']),
-                 str(cities[i]['height']),
-                 str(cities[i]['zoom']),
-                 cities[i]['format'],
-                 str(cities[i]['quality']),
-                 str(cities[i]['lat']),
-                 str(cities[i]['lon']),
-                 cities[i]['name']]
-            )
-            city_pict.wait()
+            configs.log.add('INFO: Taking picts from: %s' % city['name'])
+            city_pict_process = subprocess.Popen([
+                'phantomjs',
+                '--ignore-ssl-errors=true',
+                'get_maps.js',
+                city['dest_folder'],
+                str(city['width']),
+                str(city['height']),
+                str(city['zoom']),
+                city['format'],
+                str(city['quality']),
+                str(city['lat']),
+                str(city['lon']),
+                city['namse']
+            ])
+            city_pict_process.wait()
         except Exception as e:
-            configs.log.add('ERROR: %s \n\tSomething is not goin well... ' % e)
+            configs.log.add('ERROR: %s \n\tSomething is not going well... ' % str(e))
 
 
 def main():
