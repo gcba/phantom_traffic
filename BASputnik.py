@@ -7,10 +7,11 @@ from confs import configs
 
 def load_plugins():
     cities = []
-    plugin_folder = "./%s" % configs.plugins_confs["folder"]
+    plugin_folder = os.path.join('.', configs.plugins_confs["folder"])
     for filename in os.listdir(plugin_folder):
         if filename.endswith(".%s" % configs.plugins_confs["ext"]):
-            with open('%s/%s' % (plugin_folder, filename)) as plugin:
+            file_path = os.path.join(plugin_folder, filename)
+            with open(file_path) as plugin:
                 city_dict = json.load(plugin)
                 city = {
                     'name': city_dict['name'],
@@ -22,14 +23,14 @@ def load_plugins():
                     'times_per_hour': city_dict['obs_time']['obs_per_hour'],
                     'start_at': city_dict['obs_time']['start'],
                     'ends_at': city_dict['obs_time']['end'],
-                    'dest_folder': city_dict['render']['str_folder'],
+                    'dest_folder': os.path.join('img', city_dict['render']['str_folder']),
                     'format': city_dict['render']['out_format'],
                     'quality': city_dict['render']['quality'],
                 }
             configs.log.add('INFO: \"%s\" plugin loaded...' % city_dict['name'])
-            folder = './%s' % city['dest_folder']
+            folder = os.path.join('.', city['dest_folder'])
             if not os.path.exists(folder):
-                os.mkdir(folder)
+                os.makedirs(folder)
             cities.append(city)
     configs.log.add('INFO: %d cities loaded!' % len(cities))
     return cities
@@ -38,7 +39,7 @@ def load_plugins():
 def take_picts(cities):
     for city in cities:
         try:
-            configs.log.add('INFO: Taking picts from: %s' % city['name'])
+            configs.log.add('INFO: Taking picts of %s' % city['name'])
             city_pict_process = subprocess.Popen([
                 'phantomjs',
                 '--ignore-ssl-errors=true',
@@ -51,7 +52,7 @@ def take_picts(cities):
                 str(city['quality']),
                 str(city['lat']),
                 str(city['lon']),
-                city['namse']
+                city['name']
             ])
             city_pict_process.wait()
         except Exception as e:
