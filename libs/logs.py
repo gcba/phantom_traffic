@@ -1,12 +1,13 @@
-import time
 import datetime
 import sys
+import os
 
 
-class log:
-    def __init__(self, sufix, niceOS):
-        self.logSufix = sufix
-        if (niceOS):
+class Log:
+    def __init__(self, folder_path, sufix, nice_os):
+        self.folder_path = folder_path
+        self.log_sufix = sufix
+        if nice_os:
             self.HEADER = '\033[95m'
             self.OKBLUE = '\033[94m'
             self.OKGREEN = '\033[92m'
@@ -24,22 +25,23 @@ class log:
             self.ENDC = ""
             self.BOLD = ""
             self.UNDERLINE = ""
-        self.SESSION = datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H_%M_%S')
+        self.SESSION = datetime.datetime.now().strftime('%Y-%m-%d %H_%M_%S')
 
     def add(self, msg):
-        lColor = self.ENDC
-        now = datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')
-        filelog = "%s_%s.log" % (self.logSufix, self.SESSION)
-        with open(filelog, 'a') as logFile:
+        now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        filelog = "%s_%s.log" % (self.log_sufix, self.SESSION)
+        if not os.path.exists(self.folder_path):
+                os.makedirs(self.folder_path)
+        with open(os.path.join(self.folder_path, filelog), 'a') as logFile:
             msgf = ">> [%s]: %s \n" % (now, msg)
             logFile.write(msgf)
-            if (msg.find("ERROR") > -1):
-                lColor = self.FAIL
-            elif (msg.find("WARNING") > -1):
-                lColor = self.BOLD + self.WARNING
-            elif (msg.find("INFO") > -1):
-                lColor = self.BOLD + self.OKGREEN
-            else:
-                lColor = self.ENDC
-            msg = ">> %s[%s]%s %s \n" % (lColor, now, msg, self.ENDC)
-            sys.stdout.write(msg)
+        if msg.find("ERROR") > -1:
+            log_color = self.FAIL
+        elif msg.find("WARNING") > -1:
+            log_color = self.BOLD + self.WARNING
+        elif msg.find("INFO") > -1:
+            log_color = self.BOLD + self.OKGREEN
+        else:
+            log_color = self.ENDC
+        msg = ">> %s[%s]%s %s \n" % (log_color, now, msg, self.ENDC)
+        sys.stdout.write(msg)

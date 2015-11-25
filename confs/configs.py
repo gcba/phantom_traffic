@@ -4,10 +4,10 @@ import platform
 appName = ''
 
 actOS = platform.system().upper()
-coolOs = True if actOS != 'WINDOWS' else False
-log = logs.log('log-%s_' % appName, actOS)
+coolOs = actOS != 'WINDOWS'
+log = logs.Log('logs', 'log-%s_' % appName, actOS)
 
-plugins_confs={
+plugins_confs = {
     "folder": "plugins",
     "ext": "plugin"
 }
