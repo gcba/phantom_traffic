@@ -75,7 +75,10 @@ def status(username = None, city = None ):
                                       since=cities[i]['start_at'],
                                       la=cities[i]['dest_folder'],
                                       oph=cities[i]['times_per_hour'],
-                                      download='http://{host}:{port}/{uri}'.format(host=server_conf.server_ip) % (server_conf.server_ip,server_conf.server_port,cities[i]['dest_folder'])
+                                      download='http://{host}:{port}/{uri}'.format(host=server_conf.server_ip,
+                                                                                   port=server_conf.server_port,
+                                                                                   uri=cities[i]['dest_folder'],
+                                                                                   )
                                       )
         printme +='</table>'
 
