@@ -2,8 +2,12 @@ import subprocess
 import time
 import json
 import os
+import threading
 from confs import configs
+from libs import iGui
 
+def launchServer():
+    iGui.app.run()
 
 def load_plugins():
     cities = []
@@ -59,17 +63,25 @@ def take_picts(cities):
 
 
 def main():
+    try:
+        configs.log.add('INFO: Starting web-gui...')
+        t = threading.Thread(target=launchServer)
+        t.start()
+        configs.log.add('INFO: love is in the air! and web-gui too!!!')
+    except Exception as e:
+        configs.log.add('ERROR: something going bad... can\'t start web-gui...[%s]' % e)
     while True:
         start_time = time.time()
         cities = load_plugins()
-        take_picts(cities)
+        iGui.cities = cities
+        #take_picts(cities)
         elapsed_time = time.time() - start_time
         if elapsed_time < configs.hrdCodedTime:
             sleep_time = int(configs.hrdCodedTime-elapsed_time)
             configs.log.add('INFO: Ok, now I take little snooze for %d seconds.. ZZZzzZZ.' % sleep_time)
             time.sleep(sleep_time)
         else:
-            configs.log.add('WARNING: Cycle took too long, no time to sleep')
+            configs.log.add('WARNING: Cycle took too long, no time to sleep... :(')
 
 if __name__ == '__main__':
     main()

@@ -11,5 +11,5 @@ plugins_confs = {
     "folder": "plugins",
     "ext": "plugin"
 }
-
+imgFolder = './IMG'
 hrdCodedTime = 120
