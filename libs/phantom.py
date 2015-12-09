@@ -43,7 +43,7 @@ def take_picts(cities):
             subprocess.Popen([
                 'phantomjs',
                 '--ignore-ssl-errors=true',
-                'get_maps.js',
+                './libs/get_maps.js',
                 city['dest_folder'],
                 str(city['width']),
                 str(city['height']),

@@ -35,7 +35,8 @@ def main():
         start_thread(phantom.main)
     if not with_server and not with_phantom:
         configs.log.add('WARNING: No service launched')
-    signal.pause()
+    else:
+        signal.pause()
 
 if __name__ == '__main__':
     main()
