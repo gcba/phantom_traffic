@@ -7,7 +7,10 @@ import os
 import datetime
 import numpy as np
 from scipy.signal import savgol_filter
+from scipy.ndimage.filters import gaussian_filter
 import scipy.ndimage as scind
+import matplotlib
+import matplotlib.pyplot as plt
 
 
 class AnalisisMapas(object):
@@ -20,32 +23,36 @@ class AnalisisMapas(object):
 
     Ver Metodos: ....
     """
+    matplotlib.use('Agg')
+    self.colores = np.load(archColores)
+    self.comparators = []
+    for c in self.colores:
+        self.comparators.append((
+                                np.tile(c - 0.2, (self.mascaraL, 1)),
+                                np.tile(c + 0.2, (self.mascaraL, 1))
+                                ))
+    nHoras = 144
+    D = datetime.timedelta(seconds=600)
+    self.horas = np.absolutearray([datetime.datetime(2015, 1, 1, 0, 0, 0)
+                                   + i*D for i in range(nHoras)])
+
     def __init__(self, ciudad, dirImagenes, mascara=None,
-                 archColores="colores.npy"):
+                 archColores="colores.npy", refMapa):
         self.ciudad = ciudad
         self.dirImagenes = dirImagenes
         self._archivos = sorted(glob(self.dirImagenes + '/*gif'))
-        self.colores = np.load(archColores)
         if type(mascara) is not str:
             raise TypeError("La mascara debe contener la direccion  \
                              del arcivo de la mascara")
         else:
             self.mascara = np.load(mascara)
         self.mascaraL = np.sum(self.mascara)
-        self.comparators = []
-        for c in self.colores:
-            self.comparators.append((
-                                    np.tile(c - 0.2, (self.mascaraL, 1)),
-                                    np.tile(c + 0.2, (self.mascaraL, 1))
-                                    ))
-        nHoras = 144
-        D = datetime.timedelta(seconds=600)
-        self.horas = np.absolutearray([datetime.datetime(2015, 1, 1, 0, 0, 0)
-                                       + i*D for i in range(nHoras)])
+
         self.Accum = [np.zeros((self.mascaraL, nHoras), dtype=np.int32),
                       np.zeros((self.mascaraL, nHoras), dtype=np.int32)]
         self.N = [np.zeros((self.mascaraL, nHoras), dtype=np.int32),
                   np.zeros((self.mascaraL, nHoras), dtype=np.int32)]
+        self.refMapa = refMapa
 
     def agregar_imagenes_nuevas(self):
         """ Busca imagenes nuevas en el directorio y las analiza."""
@@ -74,10 +81,27 @@ class AnalisisMapas(object):
             i = i + 1
 
     def _calcular_fecha(archivo):
-        fecha = os.path.split(archivo)[-1][:-4]   # separar y sacar extension
+        nombre = os.path.split(archivo)[-1][:-4]   # separar y sacar extension
         try:
-            fecha = float(fecha)/1000
-            fecha = datetime.datetime.fromtimestamp(fecha)
+            milis = float(nombre)/1000
+            fecha = datetime.datetime.fromtimestamp(milis)
         except ValueError:
-            fecha = datetime.datetime.strptime(fecha, "%Y-%m-%d %H_%M_%S")
+            fecha = datetime.datetime.strptime(nombre, "%Y-%m-%d %H_%M_%S")
         return fecha
+
+    def gaficar_densidad(self, hora, FIN_SEMANA=1, percentil):
+        ref = scind.imread(self.refMapa)
+        inds = np.where(self.mascara)
+        ref[inds[0], inds[1], :] = [0.8, 0.8, 0.8, 1]
+        norm = Accum[FIN_SEMANA].astype(float64)/N[FIN_SEMANA]
+        porTramo = np.nanmean(norm, 1)
+        Q90 = np.percentile(porTramo[~isnan(porTramo)], percentil)
+        tramosMaximos = porTramo > Q90
+        temp = np.zeros(self.mascara.shape, dtype=bool)
+        temp[mascara] = tramosMaximos
+        inds = np.where(temp)
+        ref[inds[0], inds[1], :] = [1, 0, 0, 1]
+        T = gaussian_filter(temp.astype(float64), 15)
+        imshow(ref)
+        imshow(T, cmap=cm.Reds, alpha=0.5)
+        savefig('./%s-%i.png' % (self.ciudad, hora), dpi=600)
