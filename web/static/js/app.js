@@ -139,6 +139,8 @@
 
     Header.prototype.id = 'header';
 
+    Header.prototype.className = 'animation fadeIn';
+
     Header.prototype.initialize = function() {
       return this.template = Sputnik.loadTemplate('header');
     };
@@ -181,7 +183,15 @@
 
     MainMenu.prototype.id = 'main-menu';
 
-    MainMenu.prototype.render = function() {};
+    MainMenu.prototype.className = 'animated fadeIn';
+
+    MainMenu.prototype.initialize = function() {
+      return this.template = Sputnik.loadTemplate('mainMenu');
+    };
+
+    MainMenu.prototype.render = function() {
+      return this.$el.html(this.template());
+    };
 
     return MainMenu;
 

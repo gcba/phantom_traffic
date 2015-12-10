@@ -142,7 +142,19 @@ body {
   background: #000;
   position: fixed;
   top: 0;
-  left: 0; }
+  left: 0;
+  -o-animation-duration: 400ms;
+  -moz-animation-duration: 400ms;
+  -webkit-animation-duration: 400ms;
+  animation-duration: 400ms;
+  -o-animation-iteration-count: 1;
+  -moz-animation-iteration-count: 1;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  -o-animation-timing-function: linear;
+  -moz-animation-timing-function: linear;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear; }
   #header #logo {
     display: inline-block;
     width: 1em;
@@ -183,5 +195,45 @@ body {
       #header #header-menu div span {
         font-family: Lato, sans-serif;
         font-weight: 300; }
+
+#main-menu {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  margin-top: -150px; }
+  #main-menu #actions {
+    background: rgba(0, 0, 0, 0.5);
+    display: inline-block;
+    padding: 1em 3em;
+    color: #ccc;
+    font-family: Lato, sans-serif;
+    position: relative;
+    -webkit-border-bottom-left-radius: 20px;
+    -webkit-border-bottom-right-radius: 20px;
+    -moz-border-radius-bottomleft: 20px;
+    -moz-border-radius-bottomright: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px; }
+    #main-menu #actions #border-top {
+      width: 100%;
+      height: 5px;
+      background: #51E2C6;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 10px; }
+    #main-menu #actions img {
+      margin: 0 0.8em;
+      cursor: pointer; }
+    #main-menu #actions #actions-title {
+      cursor: default;
+      font-size: 1.5em;
+      margin-bottom: 0.8em; }
+    #main-menu #actions #bottom-legend {
+      cursor: default;
+      text-align: right;
+      margin-top: 1em;
+      color: #888; }
 
 /*# sourceMappingURL=app.css.map */
