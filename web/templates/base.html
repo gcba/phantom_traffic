@@ -8,11 +8,14 @@
     <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/underscore-min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/backbone-min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}" type="text/css">
+    {% block head %}{% endblock head %}
 </head>
 <body>
-
+{% block body %}{% endblock body %}
 </body>
 </html>
