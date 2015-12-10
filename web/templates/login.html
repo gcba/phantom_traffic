@@ -4,33 +4,10 @@
 {% endblock %}
 
 {% block body %}
-<div id="wrap">
-    <div id="login">
-        <div id="circle-border">
-            <div id="circle-img"></div>
-        </div>
-        <div id="form">
-            <input type="text" id="username" title="Nombre de usuario" placeholder="NOMBRE USUARIO" autocomplete="off">
-            <input type="password" id="password" title="Contraseña" placeholder="--------" autocomplete="off">
-        </div>
-        <div id="actions">
-            <span id="keep-signin" class="noselect">RECORDARME</span>
-            <span id="login-btn" class="noselect">LOGIN</span>
-        </div>
-    </div>
-</div>
-<div id="footer">
-    <div id="disclaimer">
-        Hola soy un disclaimer de cosas que son importantes de escribir en un lugar como este
-    </div>
-    <div id="copyright">
-        copyright 2015
-    </div>
-</div>
-
 <script>
-    $(function() {
-        window.app = new Sputnik.App({ el: '#wrap'});
+    $(function () {
+        window.app = new Sputnik.App({el: '#main'});
+        app.renderLogin();
     });
 </script>
 {% endblock %}
