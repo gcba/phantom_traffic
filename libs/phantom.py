@@ -35,9 +35,31 @@ def load_plugins():
     configs.log.add('INFO: %d cities loaded!' % len(cities))
     return cities
 
+def build_mask(plugin_data):
+    plugin_folder = os.path.join('.', plugin_data['dest_folder'])
+    if not '{mask_name}.msk'.format(mask_name=plugin_data['name']) in os.listdir(plugin_folder):
+        configs.log.add('INFO: Building mask for: {city}'.format(city=plugin_data['name']))
+        try:
+            subprocess.Popen([
+                'phantomjs',
+                '--ignore-ssl-errors=true',
+                './libs/create_mask.js',
+                plugin_data['dest_folder'],
+                str(plugin_data['width']),
+                str(plugin_data['height']),
+                str(plugin_data['zoom']),
+                plugin_data['format'],
+                str(plugin_data['quality']),
+                str(plugin_data['lat']),
+                str(plugin_data['lon']),
+                plugin_data['name']])
+            configs.log.add('INFO: Mask for: {city} successful created :D '.format(city=plugin_data['name']))
+        except Exception as e:
+            configs.log.add('WARRING: Can\'t create the mask for {city}\t{error}'.format(city=plugin_data['name']), error=e)
 
 def take_picts(cities):
     for city in cities:
+        build_mask(city)
         try:
             configs.log.add('INFO: Taking picts of %s' % city['name'])
             subprocess.Popen([
