@@ -1,0 +1,90 @@
+#wrap {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  left: 0;
+  top: 50%;
+  margin-top: -200px;
+  #login {
+    display: inline-block;
+    width: 350px;
+    height: 500px;
+    overflow: visible;
+    background: white;
+    #circle-img {
+      display: inline-block;
+      border-radius: 200px;
+      overflow: hidden;
+      margin-bottom: 1em;
+      img {
+        width: 150px;
+      }
+    }
+
+    #form {
+      input {
+        font-size: 2em;
+        box-sizing: content-box;
+        width: 10em;
+        border: none;
+        background: #333;
+        $green-color: #13b393;
+        color: $green-color;
+        margin-bottom: 0.4em;
+        text-align: center;
+        padding: 0.2em 0.6em;
+        $border-radius: 0.5em;
+        outline: none;
+        &#username {
+          -webkit-border-top-left-radius: $border-radius;
+          -webkit-border-top-right-radius: $border-radius;
+          -moz-border-radius-topleft: $border-radius;
+          -moz-border-radius-topright: $border-radius;
+          border-top-left-radius: $border-radius;
+          border-top-right-radius: $border-radius;
+        }
+        
+        &#password {
+          -webkit-border-bottom-left-radius: $border-radius;
+          -webkit-border-bottom-right-radius: $border-radius;
+          -moz-border-radius-bottomleft: $border-radius;
+          -moz-border-radius-bottomright: $border-radius;
+          border-bottom-left-radius: $border-radius;
+          border-bottom-right-radius: $border-radius;
+          letter-spacing: 0.3em;
+          font-weight: bold;
+        }
+        
+        &::-webkit-input-placeholder {
+           color: $green-color;
+        }
+        &:-moz-placeholder { /* Firefox 18- */
+           color: $green-color;  
+        }
+        &::-moz-placeholder {  /* Firefox 19+ */
+           color: $green-color;  
+        }
+        &:-ms-input-placeholder {  
+           color: $green-color;  
+        }
+      }
+    }
+
+  }
+}
+
+#footer {
+  position: fixed;
+  width: 100%;
+  bottom: 2em;
+  left: 0;
+  font-size: 1.3em;
+  text-align: center;
+  line-height: 1.7em;
+  #disclaimer {
+    color: #333333;
+  }
+  #copyright {
+    color: #00efbf;
+  }
+}
