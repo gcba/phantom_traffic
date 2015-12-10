@@ -4,22 +4,18 @@
 {% endblock %}
 
 {% block body %}
-<script>
-    new Sputnik.App();
-</script>
-
 <div id="wrap">
     <div id="login">
         <div id="circle-border">
             <div id="circle-img"></div>
         </div>
         <div id="form">
-            <input type="text" id="username" title="Nombre de usuario" placeholder="NOMBRE USUARIO">
-            <input type="password" id="password" title="Contraseña" placeholder="--------">
+            <input type="text" id="username" title="Nombre de usuario" placeholder="NOMBRE USUARIO" autocomplete="off">
+            <input type="password" id="password" title="Contraseña" placeholder="--------" autocomplete="off">
         </div>
         <div id="actions">
-            <span id="keep-signin">RECORDARME</span>
-            <span id="login-btn">LOGIN</span>
+            <span id="keep-signin" class="noselect">RECORDARME</span>
+            <span id="login-btn" class="noselect">LOGIN</span>
         </div>
     </div>
 </div>
@@ -31,4 +27,10 @@
         copyright 2015
     </div>
 </div>
+
+<script>
+    $(function() {
+        window.app = new Sputnik.App({ el: '#login'});
+    });
+</script>
 {% endblock %}

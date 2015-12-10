@@ -41,3 +41,8 @@ def existCity(city):
 @app.route('/status/<city>')
 def status(username=None, city=None):
     return 'TODO'
+
+@app.route('/login', methods=['POST'])
+def login():
+    # TODO: https://github.com/maxcountryman/flask-login
+    return

@@ -8,6 +8,13 @@ html {
 body {
   background: rgba(0, 0, 0, 0.34); }
 
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
 #wrap {
   position: absolute;
   width: 100%;
@@ -65,7 +72,8 @@ body {
         -moz-border-radius-topleft: 0.5em;
         -moz-border-radius-topright: 0.5em;
         border-top-left-radius: 0.5em;
-        border-top-right-radius: 0.5em; }
+        border-top-right-radius: 0.5em;
+        text-transform: uppercase; }
       #wrap #login #form input#password {
         -webkit-border-bottom-left-radius: 0.5em;
         -webkit-border-bottom-right-radius: 0.5em;
