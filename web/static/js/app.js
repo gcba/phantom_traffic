@@ -139,7 +139,13 @@
 
     Header.prototype.id = 'header';
 
-    Header.prototype.render = function() {};
+    Header.prototype.initialize = function() {
+      return this.template = Sputnik.loadTemplate('header');
+    };
+
+    Header.prototype.render = function() {
+      return this.$el.html(this.template());
+    };
 
     return Header;
 

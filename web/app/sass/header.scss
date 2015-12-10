@@ -1,0 +1,58 @@
+#header {
+  font-size: 1.7em;
+  width: 100%;
+  background: #000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  #logo {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    padding: 0.2em 0.5em;
+    border-right: solid 1px #333;
+    background: url('/static/imgs/header-logo.png') no-repeat center;
+    background-size: contain;
+  }
+
+  #title {
+    font-family: Lato, sans-serif;
+    font-weight: 300;
+    color: #ddd;
+    display: inline-block;
+    height: 100%;
+    vertical-align: super;
+    margin-left: 0.4em;
+  }
+
+  #header-menu {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    color: #999;
+    div {
+      cursor: pointer;
+      padding: 0 0.6em;
+      display: inline-block;
+      height: 100%;
+      vertical-align: middle;
+      border-left: solid 1px #333;
+      * {
+        vertical-align: sub;
+      }
+      i {
+        font-size: 0.7em;
+      }
+      span {
+        font-family: Lato, sans-serif;
+        font-weight: 300;
+      }
+    }
+
+  }
+}
