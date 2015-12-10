@@ -16,6 +16,8 @@
     width: 350px;
     height: 500px;
     overflow: visible;
+    $green-color: #51E2C6;
+
     #circle-img {
       display: inline-block;
       border-radius: 200px;
@@ -33,7 +35,6 @@
         width: 10em;
         border: none;
         background: #333;
-        $green-color: #51E2C6;
         color: $green-color;
         margin-bottom: 0.4em;
         text-align: center;
@@ -50,7 +51,7 @@
           border-top-left-radius: $border-radius;
           border-top-right-radius: $border-radius;
         }
-        
+
         &#password {
           -webkit-border-bottom-left-radius: $border-radius;
           -webkit-border-bottom-right-radius: $border-radius;
@@ -60,24 +61,42 @@
           border-bottom-right-radius: $border-radius;
           letter-spacing: 0.3em;
         }
-        
+
         &::-webkit-input-placeholder {
-           color: $green-color;
+          color: $green-color;
         }
-        &:-moz-placeholder { /* Firefox 18- */
-           color: $green-color;  
+        &:-moz-placeholder {
+          color: $green-color;
         }
-        &::-moz-placeholder {  /* Firefox 19+ */
-           color: $green-color;  
+        &::-moz-placeholder {
+          color: $green-color;
         }
-        &:-ms-input-placeholder {  
-           color: $green-color;  
+        &:-ms-input-placeholder {
+          color: $green-color;
         }
       }
     }
 
     #actions {
-
+      font-family: Lato, sans-serif;
+      font-weight: 300;
+      line-height: 2em;
+      #keep-signin {
+        vertical-align: middle;
+        cursor: pointer;
+        color: #111;
+        margin-right: 1em;
+        font-size: 1.7em;
+        &.active {
+          color: $green-color;
+        }
+      }
+      #login-btn {
+        vertical-align: middle;
+        font-size: 2.4em;
+        cursor: pointer;
+        color: $green-color;
+      }
     }
 
   }
