@@ -20,4 +20,11 @@ class Sputnik.App extends Backbone.View
       password: @$el.find('#password').val()
       keep_signed: @$el.find('#keep-signin').hasClass('active')
     }
-    console.log(data)
+    console.log('Mock login', data)
+    animationEvents = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend'
+    @$el.one(animationEvents, @hideLogin)
+    @$el.find('input').prop('disabled', true)
+    @$el.addClass('animated fadeOutDown')
+
+  hideLogin: (e) ->
+    console.log(e)

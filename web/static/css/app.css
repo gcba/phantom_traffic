@@ -6,7 +6,8 @@ html {
   background: url("/static/imgs/background.png") center; }
 
 body {
-  background: rgba(0, 0, 0, 0.34); }
+  background: rgba(0, 0, 0, 0.34);
+  overflow: hidden; }
 
 .noselect {
   -webkit-touch-callout: none;
@@ -31,7 +32,19 @@ body {
     display: inline-block;
     width: 350px;
     height: 500px;
-    overflow: visible; }
+    overflow: visible;
+    -o-animation-duration: 1.5s;
+    -moz-animation-duration: 1.5s;
+    -webkit-animation-duration: 1.5s;
+    animation-duration: 1.5s;
+    -o-animation-iteration-count: 1;
+    -moz-animation-iteration-count: 1;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+    -o-animation-timing-function: cubic-bezier(1, 0, 1, 1);
+    -moz-animation-timing-function: cubic-bezier(1, 0, 1, 1);
+    -webkit-animation-timing-function: cubic-bezier(1, 0, 1, 1);
+    animation-timing-function: cubic-bezier(1, 0, 1, 1); }
     #wrap #login #circle-border {
       position: relative;
       display: inline-block;

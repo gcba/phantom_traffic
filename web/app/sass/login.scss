@@ -21,6 +21,24 @@
     $circle-size: 140px;
     $border-size: 5px;
     $circle-space: 20px;
+
+    $animation-duration: 1.5s;
+    $animation-iteration: 1;
+    $animation-timing: cubic-bezier(1, 0, 1, 1);
+
+    -o-animation-duration: $animation-duration;
+    -moz-animation-duration: $animation-duration;
+    -webkit-animation-duration: $animation-duration;
+    animation-duration: $animation-duration;
+    -o-animation-iteration-count: $animation-iteration;
+    -moz-animation-iteration-count: $animation-iteration;
+    -webkit-animation-iteration-count: $animation-iteration;
+    animation-iteration-count: $animation-iteration;
+    -o-animation-timing-function: $animation-timing;
+    -moz-animation-timing-function: $animation-timing;
+    -webkit-animation-timing-function: $animation-timing;
+    animation-timing-function: $animation-timing;
+
     #circle-border {
       position: relative;
       display: inline-block;

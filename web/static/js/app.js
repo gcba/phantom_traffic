@@ -35,13 +35,21 @@
     };
 
     App.prototype.attemptLogin = function() {
-      var data;
+      var animationEvents, data;
       data = {
         username: this.$el.find('#username').val(),
         password: this.$el.find('#password').val(),
         keep_signed: this.$el.find('#keep-signin').hasClass('active')
       };
-      return console.log(data);
+      console.log('Mock login', data);
+      animationEvents = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+      this.$el.one(animationEvents, this.hideLogin);
+      this.$el.find('input').prop('disabled', true);
+      return this.$el.addClass('animated fadeOutDown');
+    };
+
+    App.prototype.hideLogin = function(e) {
+      return console.log(e);
     };
 
     return App;

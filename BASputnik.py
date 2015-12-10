@@ -2,7 +2,8 @@ import sys
 import multiprocessing
 import signal
 from confs import configs
-from libs import iGui, phantom
+from libs import phantom
+from web import iGui
 
 process = []
 
