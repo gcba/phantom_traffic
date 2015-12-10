@@ -5,12 +5,17 @@
   left: 0;
   top: 50%;
   margin-top: -200px;
+  background: none;
+  $green-background: rgba(19, 179, 147, 0.58);
+  background: -webkit-radial-gradient(350px 50%, $green-background, transparent);
+  background: -o-radial-gradient(350px 50%, $green-background, transparent);
+  background: -moz-radial-gradient(350px 50%, $green-background, transparent);
+  background: radial-gradient(350px 50%, $green-background, transparent);
   #login {
     display: inline-block;
     width: 350px;
     height: 500px;
     overflow: visible;
-    background: white;
     #circle-img {
       display: inline-block;
       border-radius: 200px;
@@ -28,12 +33,14 @@
         width: 10em;
         border: none;
         background: #333;
-        $green-color: #13b393;
+        $green-color: #51E2C6;
         color: $green-color;
         margin-bottom: 0.4em;
         text-align: center;
         padding: 0.2em 0.6em;
         $border-radius: 0.5em;
+        font-family: Lato, sans-serif;
+        font-weight: 300;
         outline: none;
         &#username {
           -webkit-border-top-left-radius: $border-radius;
@@ -52,7 +59,6 @@
           border-bottom-left-radius: $border-radius;
           border-bottom-right-radius: $border-radius;
           letter-spacing: 0.3em;
-          font-weight: bold;
         }
         
         &::-webkit-input-placeholder {
@@ -70,10 +76,16 @@
       }
     }
 
+    #actions {
+
+    }
+
   }
 }
 
 #footer {
+  font-family: Lato, sans-serif;
+  font-weight: 400;
   position: fixed;
   width: 100%;
   bottom: 2em;

@@ -2,8 +2,13 @@ html, body {
   height: 100%;
 }
 
+html {
+  background-size: cover;
+  background: url('/static/imgs/background.png') center;
+}
+
 body {
-  background-color: #000;
+  background: rgba(0, 0, 0, 0.34);
 }
 
 @import 'login';

@@ -1,8 +1,12 @@
 html, body {
   height: 100%; }
 
+html {
+  background-size: cover;
+  background: url("/static/imgs/background.png") center; }
+
 body {
-  background-color: #000; }
+  background: rgba(0, 0, 0, 0.34); }
 
 #wrap {
   position: absolute;
@@ -10,13 +14,17 @@ body {
   text-align: center;
   left: 0;
   top: 50%;
-  margin-top: -200px; }
+  margin-top: -200px;
+  background: none;
+  background: -webkit-radial-gradient(350px 50%, rgba(19, 179, 147, 0.58), transparent);
+  background: -o-radial-gradient(350px 50%, rgba(19, 179, 147, 0.58), transparent);
+  background: -moz-radial-gradient(350px 50%, rgba(19, 179, 147, 0.58), transparent);
+  background: radial-gradient(350px 50%, rgba(19, 179, 147, 0.58), transparent); }
   #wrap #login {
     display: inline-block;
     width: 350px;
     height: 500px;
-    overflow: visible;
-    background: white; }
+    overflow: visible; }
     #wrap #login #circle-img {
       display: inline-block;
       border-radius: 200px;
@@ -30,10 +38,12 @@ body {
       width: 10em;
       border: none;
       background: #333;
-      color: #13b393;
+      color: #51E2C6;
       margin-bottom: 0.4em;
       text-align: center;
       padding: 0.2em 0.6em;
+      font-family: Lato, sans-serif;
+      font-weight: 300;
       outline: none; }
       #wrap #login #form input#username {
         -webkit-border-top-left-radius: 0.5em;
@@ -49,20 +59,21 @@ body {
         -moz-border-radius-bottomright: 0.5em;
         border-bottom-left-radius: 0.5em;
         border-bottom-right-radius: 0.5em;
-        letter-spacing: 0.3em;
-        font-weight: bold; }
+        letter-spacing: 0.3em; }
       #wrap #login #form input::-webkit-input-placeholder {
-        color: #13b393; }
+        color: #51E2C6; }
       #wrap #login #form input:-moz-placeholder {
         /* Firefox 18- */
-        color: #13b393; }
+        color: #51E2C6; }
       #wrap #login #form input::-moz-placeholder {
         /* Firefox 19+ */
-        color: #13b393; }
+        color: #51E2C6; }
       #wrap #login #form input:-ms-input-placeholder {
-        color: #13b393; }
+        color: #51E2C6; }
 
 #footer {
+  font-family: Lato, sans-serif;
+  font-weight: 400;
   position: fixed;
   width: 100%;
   bottom: 2em;
