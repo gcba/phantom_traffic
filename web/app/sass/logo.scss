@@ -20,5 +20,82 @@ $logo-height: 20em;
     img {
       height: $logo-height;
     }
+
+    #legend-container {
+      font-family: Lato, sans-serif;
+      font-weight: 300;
+      color: #eee;
+      position: absolute;
+      left: 50%;
+      top: $logo-height;
+      $legend-width: 100em;
+      width: $legend-width;
+      margin-left: -$legend-width/2;
+      #legend {
+        font-size: 2.2em;
+        white-space: nowrap;
+      }
+    }
   }
+}
+
+@keyframes legend-animation {
+  0% {
+    letter-spacing: 5em;
+    opacity: 0;
+    -webkit-filter: blur(10px);
+    filter: blur(10px);
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    letter-spacing: 0;
+  }
+  100% {
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+  }
+}
+
+$animation-iteration: 1;
+$animation-fill: forwards;
+
+$legend-animation-duration: 4s;
+$legend-animation-delay: 0ms;
+$legend-animation-timing: ease-out;
+$legend-animation-name: legend-animation;
+
+
+#legend {
+  -o-animation-iteration-count: $animation-iteration;
+  -moz-animation-iteration-count: $animation-iteration;
+  -webkit-animation-iteration-count: $animation-iteration;
+  animation-iteration-count: $animation-iteration;
+
+  -webkit-animation-fill-mode: $animation-fill;
+  -moz-animation-fill-mode: $animation-fill;
+  -o-animation-fill-mode: $animation-fill;
+  animation-fill-mode: $animation-fill;
+    
+  -o-animation-duration: $legend-animation-duration;
+  -moz-animation-duration: $legend-animation-duration;
+  -webkit-animation-duration: $legend-animation-duration;
+  animation-duration: $legend-animation-duration;
+
+  -o-animation-timing-function: $legend-animation-timing;
+  -moz-animation-timing-function: $legend-animation-timing;
+  -webkit-animation-timing-function: $legend-animation-timing;
+  animation-timing-function: $legend-animation-timing;
+
+  -o-animation-name: $legend-animation-name;
+  -moz-animation-name: $legend-animation-name;
+  -webkit-animation-name: $legend-animation-name;
+  animation-name: $legend-animation-name;
+
+  -o-animation-delay: $legend-animation-delay;
+  -moz-animation-delay: $legend-animation-delay;
+  -webkit-animation-delay: $legend-animation-delay;
+  animation-delay: $legend-animation-delay;
+
 }
