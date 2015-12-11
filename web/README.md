@@ -7,5 +7,5 @@ Para compilar la app de javascript
 
 Para compilar sass en css
 
-- `sass ./app/sass:./static/css/app.css`
-- `sass --watch ./app/sass/app.scss:./static/css`
+- `sass ./app/sass/app.scss:./static/css/app.css`
+- `sass --watch ./app/sass/app.scss:./static/css/app.css`

@@ -63,6 +63,50 @@
 
   })(Backbone.View);
 
+  Sputnik.Disclaimer = (function(superClass) {
+    extend(Disclaimer, superClass);
+
+    function Disclaimer() {
+      return Disclaimer.__super__.constructor.apply(this, arguments);
+    }
+
+    Disclaimer.prototype.id = 'footer';
+
+    Disclaimer.prototype.initialize = function() {
+      return this.template = Sputnik.loadTemplate('disclaimer');
+    };
+
+    Disclaimer.prototype.render = function() {
+      return this.$el.html(this.template());
+    };
+
+    return Disclaimer;
+
+  })(Backbone.View);
+
+  Sputnik.Header = (function(superClass) {
+    extend(Header, superClass);
+
+    function Header() {
+      return Header.__super__.constructor.apply(this, arguments);
+    }
+
+    Header.prototype.id = 'header';
+
+    Header.prototype.className = 'animation fadeIn';
+
+    Header.prototype.initialize = function() {
+      return this.template = Sputnik.loadTemplate('header');
+    };
+
+    Header.prototype.render = function() {
+      return this.$el.html(this.template());
+    };
+
+    return Header;
+
+  })(Backbone.View);
+
   Sputnik.Login = (function(superClass) {
     extend(Login, superClass);
 
@@ -130,50 +174,6 @@
 
   })(Backbone.View);
 
-  Sputnik.Header = (function(superClass) {
-    extend(Header, superClass);
-
-    function Header() {
-      return Header.__super__.constructor.apply(this, arguments);
-    }
-
-    Header.prototype.id = 'header';
-
-    Header.prototype.className = 'animation fadeIn';
-
-    Header.prototype.initialize = function() {
-      return this.template = Sputnik.loadTemplate('header');
-    };
-
-    Header.prototype.render = function() {
-      return this.$el.html(this.template());
-    };
-
-    return Header;
-
-  })(Backbone.View);
-
-  Sputnik.Disclaimer = (function(superClass) {
-    extend(Disclaimer, superClass);
-
-    function Disclaimer() {
-      return Disclaimer.__super__.constructor.apply(this, arguments);
-    }
-
-    Disclaimer.prototype.id = 'footer';
-
-    Disclaimer.prototype.initialize = function() {
-      return this.template = Sputnik.loadTemplate('disclaimer');
-    };
-
-    Disclaimer.prototype.render = function() {
-      return this.$el.html(this.template());
-    };
-
-    return Disclaimer;
-
-  })(Backbone.View);
-
   Sputnik.MainMenu = (function(superClass) {
     extend(MainMenu, superClass);
 
@@ -182,8 +182,6 @@
     }
 
     MainMenu.prototype.id = 'main-menu';
-
-    MainMenu.prototype.className = 'animated fadeIn';
 
     MainMenu.prototype.initialize = function() {
       return this.template = Sputnik.loadTemplate('mainMenu');

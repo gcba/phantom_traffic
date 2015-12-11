@@ -48,26 +48,26 @@ body {
     #wrap #login #circle-border {
       position: relative;
       display: inline-block;
-      height: 160px;
-      width: 160px;
-      border-radius: 160px;
+      height: 10em;
+      width: 10em;
+      border-radius: 10em;
       overflow: hidden;
-      border: solid 5px #51E2C6;
+      border: solid 0.4em #51E2C6;
       margin-bottom: 1em; }
       #wrap #login #circle-border #circle-img {
         display: inline-block;
-        height: 140px;
-        width: 140px;
-        border-radius: 140px;
+        height: 8em;
+        width: 8em;
+        border-radius: 8em;
         background: #333;
         overflow: hidden;
         position: absolute;
         top: 50%;
         left: 50%;
-        margin-top: -70px;
-        margin-left: -70px; }
+        margin-top: -4em;
+        margin-left: -4em; }
     #wrap #login #form input {
-      font-size: 2em;
+      font-size: 1.7em;
       box-sizing: content-box;
       width: 10em;
       border: none;
@@ -112,12 +112,12 @@ body {
         cursor: pointer;
         color: #111;
         margin-right: 1em;
-        font-size: 1.7em; }
+        font-size: 1.5em; }
         #wrap #login #actions #keep-signin.active {
           color: #51E2C6; }
       #wrap #login #actions #login-btn {
         vertical-align: middle;
-        font-size: 2.4em;
+        font-size: 2em;
         cursor: pointer;
         color: #51E2C6; }
 
@@ -205,7 +205,8 @@ body {
   #main-menu #actions {
     background: rgba(0, 0, 0, 0.5);
     display: inline-block;
-    padding: 1em 3em;
+    max-height: 0;
+    padding: 0 3em;
     color: #ccc;
     font-family: Lato, sans-serif;
     position: relative;
@@ -223,17 +224,99 @@ body {
       top: 0;
       left: 0;
       border-radius: 10px; }
-    #main-menu #actions img {
-      margin: 0 0.8em;
-      cursor: pointer; }
-    #main-menu #actions #actions-title {
-      cursor: default;
-      font-size: 1.5em;
-      margin-bottom: 0.8em; }
-    #main-menu #actions #bottom-legend {
-      cursor: default;
-      text-align: right;
-      margin-top: 1em;
-      color: #888; }
+    #main-menu #actions #actions-fadein {
+      opacity: 0; }
+      #main-menu #actions #actions-fadein img {
+        margin: 0 0.8em;
+        cursor: pointer; }
+      #main-menu #actions #actions-fadein #actions-title {
+        cursor: default;
+        font-size: 1.5em;
+        margin-bottom: 0.8em; }
+      #main-menu #actions #actions-fadein #bottom-legend {
+        cursor: default;
+        text-align: right;
+        margin-top: 1em;
+        color: #888; }
+
+@keyframes open-horizontally {
+  from {
+    left: 50%;
+    width: 0; }
+  to {
+    left: 0;
+    width: 100%; } }
+@keyframes open-vertically {
+  from {
+    max-height: 0;
+    padding: 0 3em; }
+  to {
+    max-height: 400px;
+    padding: 1em 3em; } }
+@keyframes fadein {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+#main-menu #border-top, #main-menu #actions, #main-menu #actions-fadein {
+  -o-animation-iteration-count: 1;
+  -moz-animation-iteration-count: 1;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  animation-fill-mode: forwards; }
+#main-menu #border-top {
+  -o-animation-duration: 600ms;
+  -moz-animation-duration: 600ms;
+  -webkit-animation-duration: 600ms;
+  animation-duration: 600ms;
+  -o-animation-timing-function: ease-out;
+  -moz-animation-timing-function: ease-out;
+  -webkit-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+  -o-animation-name: open-horizontally;
+  -moz-animation-name: open-horizontally;
+  -webkit-animation-name: open-horizontally;
+  animation-name: open-horizontally;
+  -o-animation-delay: 0;
+  -moz-animation-delay: 0;
+  -webkit-animation-delay: 0;
+  animation-delay: 0; }
+#main-menu #actions {
+  -o-animation-duration: 700ms;
+  -moz-animation-duration: 700ms;
+  -webkit-animation-duration: 700ms;
+  animation-duration: 700ms;
+  -o-animation-timing-function: cubic-bezier(0.25, 0, 0.82, 1);
+  -moz-animation-timing-function: cubic-bezier(0.25, 0, 0.82, 1);
+  -webkit-animation-timing-function: cubic-bezier(0.25, 0, 0.82, 1);
+  animation-timing-function: cubic-bezier(0.25, 0, 0.82, 1);
+  -o-animation-name: open-vertically;
+  -moz-animation-name: open-vertically;
+  -webkit-animation-name: open-vertically;
+  animation-name: open-vertically;
+  -o-animation-delay: 600ms;
+  -moz-animation-delay: 600ms;
+  -webkit-animation-delay: 600ms;
+  animation-delay: 600ms; }
+#main-menu #actions-fadein {
+  -o-animation-duration: 700ms;
+  -moz-animation-duration: 700ms;
+  -webkit-animation-duration: 700ms;
+  animation-duration: 700ms;
+  -o-animation-timing-function: linear;
+  -moz-animation-timing-function: linear;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -o-animation-name: fadein;
+  -moz-animation-name: fadein;
+  -webkit-animation-name: fadein;
+  animation-name: fadein;
+  -o-animation-delay: 810ms;
+  -moz-animation-delay: 810ms;
+  -webkit-animation-delay: 810ms;
+  animation-delay: 810ms; }
 
 /*# sourceMappingURL=app.css.map */
