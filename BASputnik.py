@@ -2,6 +2,7 @@ import sys
 import multiprocessing
 import signal
 from confs import configs
+from confs import server_conf
 from libs import phantom
 from web import iGui
 
@@ -31,7 +32,7 @@ def main():
     with_server = 'server' in params
     with_phantom = 'phantom' in params
     if with_server:
-        start_thread(iGui.app.run)
+        start_thread(iGui.app.run(host=server_conf.server_ip, port=server_conf.server_port))
     if with_phantom:
         start_thread(phantom.main)
     if not with_server and not with_phantom:
