@@ -1,4 +1,4 @@
-html, body {
+html, body, #main {
   height: 100%; }
 
 html {
@@ -15,6 +15,23 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none; }
+
+#logo-container {
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin-top: -10em;
+  background: none;
+  background: -webkit-radial-gradient(10em 50%, rgba(19, 179, 147, 0.58), transparent);
+  background: -o-radial-gradient(10em 50%, rgba(19, 179, 147, 0.58), transparent);
+  background: -moz-radial-gradient(10em 50%, rgba(19, 179, 147, 0.58), transparent);
+  background: radial-gradient(10em 50%, rgba(19, 179, 147, 0.58), transparent); }
+  #logo-container #logo {
+    display: inline-block; }
+    #logo-container #logo img {
+      height: 20em; }
 
 #wrap {
   position: absolute;

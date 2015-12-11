@@ -1,4 +1,4 @@
-html, body {
+html, body, #main {
   height: 100%;
 }
 
@@ -20,6 +20,7 @@ body {
     user-select: none;
 }
 
+@import 'logo';
 @import 'login';
 @import 'disclaimer';
 @import 'header';

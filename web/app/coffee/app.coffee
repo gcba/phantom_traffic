@@ -14,6 +14,8 @@ window.Sputnik = {
 class Sputnik.App extends Backbone.View
 
   initialize: ->
+    @logo = new Sputnik.Logo
+
     @login = new Sputnik.Login
     @login.bind('userSignedIn', @userSignedIn)
 
@@ -24,6 +26,11 @@ class Sputnik.App extends Backbone.View
   userSignedIn: (user) =>
     Sputnik.user = user
     @renderMainApp()
+
+  renderLogo: ->
+    @$el.html('')
+    @logo.render()
+    @$el.append(@logo.el)
 
   renderLogin: ->
     @$el.html('')

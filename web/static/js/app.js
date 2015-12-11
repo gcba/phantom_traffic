@@ -29,6 +29,7 @@
     }
 
     App.prototype.initialize = function() {
+      this.logo = new Sputnik.Logo;
       this.login = new Sputnik.Login;
       this.login.bind('userSignedIn', this.userSignedIn);
       this.disclaimer = new Sputnik.Disclaimer;
@@ -39,6 +40,12 @@
     App.prototype.userSignedIn = function(user) {
       Sputnik.user = user;
       return this.renderMainApp();
+    };
+
+    App.prototype.renderLogo = function() {
+      this.$el.html('');
+      this.logo.render();
+      return this.$el.append(this.logo.el);
     };
 
     App.prototype.renderLogin = function() {
@@ -192,6 +199,27 @@
     };
 
     return MainMenu;
+
+  })(Backbone.View);
+
+  Sputnik.Logo = (function(superClass) {
+    extend(Logo, superClass);
+
+    function Logo() {
+      return Logo.__super__.constructor.apply(this, arguments);
+    }
+
+    Logo.prototype.id = 'logo-container';
+
+    Logo.prototype.initialize = function() {
+      return this.template = Sputnik.loadTemplate('logo');
+    };
+
+    Logo.prototype.render = function() {
+      return this.$el.html(this.template());
+    };
+
+    return Logo;
 
   })(Backbone.View);
 
