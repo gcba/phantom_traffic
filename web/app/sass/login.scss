@@ -39,30 +39,12 @@
     -webkit-animation-timing-function: $animation-timing;
     animation-timing-function: $animation-timing;
 
-    #circle-border {
-      position: relative;
-      display: inline-block;
-      height: $circle-size + $circle-space;
-      width: $circle-size + $circle-space;
-      border-radius: $circle-size + $circle-space;
-      overflow: hidden;
-      border: solid $border-size $green-color;
-      #circle-img {
-        display: inline-block;
-        height: $circle-size;
-        width: $circle-size;
-        border-radius: $circle-size;
-        background: #333;
-        overflow: hidden;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        margin-top: -$circle-size/2;
-        margin-left: -$circle-size/2;
-      }
+    #img-container {
       margin-bottom: 1em;
+      img {
+        height: 10em;
+      }
     }
-
 
     #form {
       input {
@@ -70,7 +52,7 @@
         box-sizing: content-box;
         width: 10em;
         border: none;
-        background: #333;
+        background: #1a1a1a;
         color: $green-color;
         margin-bottom: 0.4em;
         text-align: center;
