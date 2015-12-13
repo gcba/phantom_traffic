@@ -16,9 +16,21 @@ $logo-height: 20em;
   background: radial-gradient($logo-height/2 50%, $green-background, transparent);
 
   #logo {
+    position: relative;
     display: inline-block;
+    height: $logo-height;
+    width: $logo-height*255/280;
     img {
       height: $logo-height;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+    }
+    #top-logo, #left-logo {
+      left: 0;
+    }
+    #right-logo {
+      right: 0;
     }
 
     #legend-container {
@@ -32,6 +44,7 @@ $logo-height: 20em;
       width: $legend-width;
       margin-left: -$legend-width/2;
       #legend {
+        opacity: 0;
         letter-spacing: 0;
         font-size: 2.2em;
         white-space: nowrap;
@@ -61,6 +74,7 @@ $logo-height: 20em;
     -moz-filter: blur(0px);
     -o-filter: blur(0px);
     filter: blur(0px);
+    opacity: 1;
   }
 }
 
@@ -68,8 +82,8 @@ $animation-iteration: 1;
 $animation-fill: forwards;
 
 $legend-animation-duration: 4s;
-$legend-animation-delay: 0ms;
-$legend-animation-timing: ease-out;
+$legend-animation-delay: 1s;
+$legend-animation-timing: cubic-bezier(0.4, 0, 1, 1);
 $legend-animation-name: legend-animation;
 
 #legend {
@@ -102,4 +116,137 @@ $legend-animation-name: legend-animation;
   -moz-animation-delay: $legend-animation-delay;
   -webkit-animation-delay: $legend-animation-delay;
   animation-delay: $legend-animation-delay;
+}
+
+$logo-blur: 10px;
+@keyframes top-logo-animation {
+  0% {
+    opacity: 0;
+    -webkit-filter: blur($logo-blur);
+    -moz-filter: blur($logo-blur);
+    -o-filter: blur($logo-blur);
+    filter: blur($logo-blur);
+    top: -$logo-height/3;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    top: 0;
+  }
+  100% {
+    opacity: 1;
+    -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    -o-filter: blur(0px);
+    filter: blur(0px);
+  }
+}
+
+@keyframes right-logo-animation {
+  0% {
+    opacity: 0;
+    -webkit-filter: blur($logo-blur);
+    -moz-filter: blur($logo-blur);
+    -o-filter: blur($logo-blur);
+    filter: blur($logo-blur);
+    top: $logo-height/3;
+    right: -$logo-height/3;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    top: 0;
+    right: 0;
+  }
+  100% {
+    opacity: 1;
+    -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    -o-filter: blur(0px);
+    filter: blur(0px);
+  }
+}
+
+@keyframes left-logo-animation {
+  0% {
+    opacity: 0;
+    -webkit-filter: blur($logo-blur);
+    -moz-filter: blur($logo-blur);
+    -o-filter: blur($logo-blur);
+    filter: blur($logo-blur);
+    top: $logo-height/3;
+    left: -$logo-height/3;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    top: 0;
+    left: 0;
+  }
+  100% {
+    opacity: 1;
+    -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    -o-filter: blur(0px);
+    filter: blur(0px);
+  }
+}
+
+
+$logo-animation-duration: 4s;
+$logo-animation-timing: ease-out;
+$logo-animation-delay: 1s;
+$top-logo-animation-name: top-logo-animation;
+$right-logo-animation-name: right-logo-animation;
+$left-logo-animation-name: left-logo-animation;
+
+#logo {
+  #top-logo, #right-logo, #left-logo {
+    -o-animation-iteration-count: $animation-iteration;
+    -moz-animation-iteration-count: $animation-iteration;
+    -webkit-animation-iteration-count: $animation-iteration;
+    animation-iteration-count: $animation-iteration;
+
+    -webkit-animation-fill-mode: $animation-fill;
+    -moz-animation-fill-mode: $animation-fill;
+    -o-animation-fill-mode: $animation-fill;
+    animation-fill-mode: $animation-fill;
+    
+    -o-animation-duration: $logo-animation-duration;
+    -moz-animation-duration: $logo-animation-duration;
+    -webkit-animation-duration: $logo-animation-duration;
+    animation-duration: $logo-animation-duration;
+
+    -o-animation-timing-function: $logo-animation-timing;
+    -moz-animation-timing-function: $logo-animation-timing;
+    -webkit-animation-timing-function: $logo-animation-timing;
+    animation-timing-function: $logo-animation-timing;
+    
+    -o-animation-delay: $logo-animation-delay;
+    -moz-animation-delay: $logo-animation-delay;
+    -webkit-animation-delay: $logo-animation-delay;
+    animation-delay: $logo-animation-delay;
+  }
+  
+  #top-logo {
+    -o-animation-name: $top-logo-animation-name;
+    -moz-animation-name: $top-logo-animation-name;
+    -webkit-animation-name: $top-logo-animation-name;
+    animation-name: $top-logo-animation-name;
+  }
+  #right-logo {
+    -o-animation-name: $right-logo-animation-name;
+    -moz-animation-name: $right-logo-animation-name;
+    -webkit-animation-name: $right-logo-animation-name;
+    animation-name: $right-logo-animation-name;
+  }
+  #left-logo {
+    -o-animation-name: $left-logo-animation-name;
+    -moz-animation-name: $left-logo-animation-name;
+    -webkit-animation-name: $left-logo-animation-name;
+    animation-name: $left-logo-animation-name;
+  }
 }

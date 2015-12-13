@@ -181,27 +181,6 @@
 
   })(Backbone.View);
 
-  Sputnik.MainMenu = (function(superClass) {
-    extend(MainMenu, superClass);
-
-    function MainMenu() {
-      return MainMenu.__super__.constructor.apply(this, arguments);
-    }
-
-    MainMenu.prototype.id = 'main-menu';
-
-    MainMenu.prototype.initialize = function() {
-      return this.template = Sputnik.loadTemplate('mainMenu');
-    };
-
-    MainMenu.prototype.render = function() {
-      return this.$el.html(this.template());
-    };
-
-    return MainMenu;
-
-  })(Backbone.View);
-
   Sputnik.Logo = (function(superClass) {
     extend(Logo, superClass);
 
@@ -220,6 +199,27 @@
     };
 
     return Logo;
+
+  })(Backbone.View);
+
+  Sputnik.MainMenu = (function(superClass) {
+    extend(MainMenu, superClass);
+
+    function MainMenu() {
+      return MainMenu.__super__.constructor.apply(this, arguments);
+    }
+
+    MainMenu.prototype.id = 'main-menu';
+
+    MainMenu.prototype.initialize = function() {
+      return this.template = Sputnik.loadTemplate('mainMenu');
+    };
+
+    MainMenu.prototype.render = function() {
+      return this.$el.html(this.template());
+    };
+
+    return MainMenu;
 
   })(Backbone.View);
 
