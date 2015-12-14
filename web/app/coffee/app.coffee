@@ -43,7 +43,7 @@ class Sputnik.App extends Backbone.View
 
     @header.render()
     @mainMenu.render()
-    @disclaimer.render()
+    @disclaimer.render(fadein: false)
 
     @$el.append(@header.el)
     @$el.append(@mainMenu.el)

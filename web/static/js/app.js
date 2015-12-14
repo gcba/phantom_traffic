@@ -56,7 +56,9 @@
       this.$el.html('');
       this.header.render();
       this.mainMenu.render();
-      this.disclaimer.render();
+      this.disclaimer.render({
+        fadein: false
+      });
       this.$el.append(this.header.el);
       this.$el.append(this.mainMenu.el);
       return this.$el.append(this.disclaimer.el);
@@ -79,14 +81,14 @@
       return this.template = Sputnik.loadTemplate('disclaimer');
     };
 
-    Disclaimer.prototype.render = function(fadein) {
-      if (fadein == null) {
-        fadein = true;
+    Disclaimer.prototype.render = function(options) {
+      if (options == null) {
+        options = {
+          fadein: true
+        };
       }
       this.$el.html(this.template());
-      if (fadein) {
-        return this.$el.addClass('fadein');
-      }
+      return this.$el.toggleClass('fadein', options.fadein);
     };
 
     return Disclaimer;
@@ -219,10 +221,17 @@
     extend(MainMenu, superClass);
 
     function MainMenu() {
+      this.showConfig = bind(this.showConfig, this);
       return MainMenu.__super__.constructor.apply(this, arguments);
     }
 
     MainMenu.prototype.id = 'main-menu';
+
+    MainMenu.prototype.className = 'menu-animation';
+
+    MainMenu.prototype.events = {
+      'click #menu-config': 'showConfig'
+    };
 
     MainMenu.prototype.initialize = function() {
       return this.template = Sputnik.loadTemplate('mainMenu');
@@ -230,6 +239,10 @@
 
     MainMenu.prototype.render = function() {
       return this.$el.html(this.template());
+    };
+
+    MainMenu.prototype.showConfig = function(e) {
+      return this.$el.removeClass('menu-animation');
     };
 
     return MainMenu;
