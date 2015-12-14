@@ -175,11 +175,15 @@ $logo-blur: 10px;
   }
 }
 
+$fall-delay: 1s;
+$fall-duration: 1s;
 #logo-container {
   @include animation-name(logo-fall);
-  @include animation-delay($animation-duration + 1s);
-  @include animation-duration(1s);
+  @include animation-delay($animation-duration + $fall-delay);
+  @include animation-duration($fall-duration);
   @include animation-iteration(1);
   @include animation-timing(ease-in);
   @include animation-fill(forwards);
 }
+
+$logo-fall-ended: $animation-duration + $fall-delay + $fall-duration;

@@ -45,15 +45,11 @@
     App.prototype.renderLogo = function() {
       this.$el.html('');
       this.logo.render();
-      return this.$el.append(this.logo.el);
-    };
-
-    App.prototype.renderLogin = function() {
-      this.$el.html('');
       this.login.render();
       this.disclaimer.render();
       this.$el.append(this.login.el);
-      return this.$el.append(this.disclaimer.el);
+      this.$el.append(this.disclaimer.el);
+      return this.$el.append(this.logo.el);
     };
 
     App.prototype.renderMainApp = function() {
@@ -83,8 +79,14 @@
       return this.template = Sputnik.loadTemplate('disclaimer');
     };
 
-    Disclaimer.prototype.render = function() {
-      return this.$el.html(this.template());
+    Disclaimer.prototype.render = function(fadein) {
+      if (fadein == null) {
+        fadein = true;
+      }
+      this.$el.html(this.template());
+      if (fadein) {
+        return this.$el.addClass('fadein');
+      }
     };
 
     return Disclaimer;
@@ -136,8 +138,19 @@
       return this.template = Sputnik.loadTemplate('login');
     };
 
-    Login.prototype.render = function() {
-      return this.$el.html(this.template());
+    Login.prototype.render = function(fall) {
+      if (fall == null) {
+        fall = true;
+      }
+      this.$el.html(this.template());
+      if (fall) {
+        this.$el.addClass('fall');
+        return this.$el.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', (function(_this) {
+          return function() {
+            return _this.$el.removeClass('fall');
+          };
+        })(this));
+      }
     };
 
     Login.prototype.onKeyPress = function(e) {
