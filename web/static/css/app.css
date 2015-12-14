@@ -559,10 +559,10 @@ body {
         color: #51E2C6; }
   #wrap.fall {
     opacity: 0;
-    -o-animation-duration: 1s;
-    -moz-animation-duration: 1s;
-    -webkit-animation-duration: 1s;
-    animation-duration: 1s;
+    -o-animation-duration: 700ms;
+    -moz-animation-duration: 700ms;
+    -webkit-animation-duration: 700ms;
+    animation-duration: 700ms;
     -o-animation-iteration-count: 1;
     -moz-animation-iteration-count: 1;
     -webkit-animation-iteration-count: 1;
@@ -851,7 +851,7 @@ body {
   to {
     opacity: 1; } }
 #header {
-  font-size: 1.7em;
+  font-size: 1.5em;
   width: 100%;
   background: #000;
   position: fixed;
@@ -919,8 +919,7 @@ body {
   #main-menu #actions {
     background: rgba(0, 0, 0, 0.5);
     display: inline-block;
-    max-height: 0;
-    padding: 0 3em;
+    padding: 1em 3em;
     color: #ccc;
     font-family: Lato, sans-serif;
     position: relative;
@@ -938,20 +937,18 @@ body {
       top: 0;
       left: 0;
       border-radius: 10px; }
-    #main-menu #actions #actions-fadein {
-      opacity: 0; }
-      #main-menu #actions #actions-fadein img {
-        margin: 0 0.8em;
-        cursor: pointer; }
-      #main-menu #actions #actions-fadein #actions-title {
-        cursor: default;
-        font-size: 1.5em;
-        margin-bottom: 0.8em; }
-      #main-menu #actions #actions-fadein #bottom-legend {
-        cursor: default;
-        text-align: right;
-        margin-top: 1em;
-        color: #888; }
+    #main-menu #actions #actions-fadein img {
+      margin: 0 0.8em;
+      cursor: pointer; }
+    #main-menu #actions #actions-fadein #actions-title {
+      cursor: default;
+      font-size: 1.5em;
+      margin-bottom: 0.8em; }
+    #main-menu #actions #actions-fadein #bottom-legend {
+      cursor: default;
+      text-align: right;
+      margin-top: 1em;
+      color: #888; }
 
 @keyframes open-horizontally {
   from {
@@ -972,7 +969,12 @@ body {
     opacity: 0; }
   to {
     opacity: 1; } }
-#main-menu #border-top, #main-menu #actions, #main-menu #actions-fadein {
+#main-menu.menu-intro-animation #actions {
+  max-height: 0;
+  padding: 0 3em; }
+  #main-menu.menu-intro-animation #actions #actions-fadein {
+    opacity: 0; }
+#main-menu.menu-intro-animation #border-top, #main-menu.menu-intro-animation #actions, #main-menu.menu-intro-animation #actions-fadein {
   -o-animation-iteration-count: 1;
   -moz-animation-iteration-count: 1;
   -webkit-animation-iteration-count: 1;
@@ -981,7 +983,7 @@ body {
   -moz-animation-fill-mode: forwards;
   -o-animation-fill-mode: forwards;
   animation-fill-mode: forwards; }
-#main-menu #border-top {
+#main-menu.menu-intro-animation #border-top {
   -o-animation-duration: 600ms;
   -moz-animation-duration: 600ms;
   -webkit-animation-duration: 600ms;
@@ -998,7 +1000,7 @@ body {
   -moz-animation-delay: 0ms;
   -webkit-animation-delay: 0ms;
   animation-delay: 0ms; }
-#main-menu #actions {
+#main-menu.menu-intro-animation #actions {
   -o-animation-duration: 700ms;
   -moz-animation-duration: 700ms;
   -webkit-animation-duration: 700ms;
@@ -1015,7 +1017,7 @@ body {
   -moz-animation-delay: 600ms;
   -webkit-animation-delay: 600ms;
   animation-delay: 600ms; }
-#main-menu #actions-fadein {
+#main-menu.menu-intro-animation #actions-fadein {
   -o-animation-duration: 700ms;
   -moz-animation-duration: 700ms;
   -webkit-animation-duration: 700ms;
@@ -1032,5 +1034,97 @@ body {
   -moz-animation-delay: 810ms;
   -webkit-animation-delay: 810ms;
   animation-delay: 810ms; }
+
+@keyframes fadeout {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0; } }
+@keyframes expand {
+  from {
+    min-width: 0;
+    min-height: 0; }
+  to {
+    min-width: 800px;
+    min-height: 100%; } }
+@keyframes go-up {
+  to {
+    margin-top: 0;
+    padding-top: 4em;
+    top: 0; } }
+#main-menu.menu-outro-animation {
+  cursor: default;
+  pointer-events: none;
+  height: 100%;
+  padding-bottom: 8em;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -o-animation-iteration-count: 1;
+  -moz-animation-iteration-count: 1;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  -o-animation-duration: 500ms;
+  -moz-animation-duration: 500ms;
+  -webkit-animation-duration: 500ms;
+  animation-duration: 500ms;
+  -o-animation-timing-function: linear;
+  -moz-animation-timing-function: linear;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -o-animation-name: go-up;
+  -moz-animation-name: go-up;
+  -webkit-animation-name: go-up;
+  animation-name: go-up;
+  -o-animation-delay: 0;
+  -moz-animation-delay: 0;
+  -webkit-animation-delay: 0;
+  animation-delay: 0; }
+  #main-menu.menu-outro-animation #actions, #main-menu.menu-outro-animation #actions-fadein {
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -o-animation-iteration-count: 1;
+    -moz-animation-iteration-count: 1;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1; }
+  #main-menu.menu-outro-animation #actions-fadein {
+    -o-animation-duration: 400ms;
+    -moz-animation-duration: 400ms;
+    -webkit-animation-duration: 400ms;
+    animation-duration: 400ms;
+    -o-animation-timing-function: linear;
+    -moz-animation-timing-function: linear;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -o-animation-name: fadeout;
+    -moz-animation-name: fadeout;
+    -webkit-animation-name: fadeout;
+    animation-name: fadeout;
+    -o-animation-delay: 0;
+    -moz-animation-delay: 0;
+    -webkit-animation-delay: 0;
+    animation-delay: 0; }
+  #main-menu.menu-outro-animation #actions {
+    max-width: 90%;
+    min-width: 800px;
+    -o-animation-duration: 600ms;
+    -moz-animation-duration: 600ms;
+    -webkit-animation-duration: 600ms;
+    animation-duration: 600ms;
+    -o-animation-timing-function: linear;
+    -moz-animation-timing-function: linear;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -o-animation-name: expand;
+    -moz-animation-name: expand;
+    -webkit-animation-name: expand;
+    animation-name: expand;
+    -o-animation-delay: 0;
+    -moz-animation-delay: 0;
+    -webkit-animation-delay: 0;
+    animation-delay: 0; }
 
 /*# sourceMappingURL=app.css.map */

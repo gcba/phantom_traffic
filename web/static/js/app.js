@@ -227,7 +227,7 @@
 
     MainMenu.prototype.id = 'main-menu';
 
-    MainMenu.prototype.className = 'menu-animation';
+    MainMenu.prototype.className = 'menu-intro-animation';
 
     MainMenu.prototype.events = {
       'click #menu-config': 'showConfig'
@@ -241,8 +241,8 @@
       return this.$el.html(this.template());
     };
 
-    MainMenu.prototype.showConfig = function(e) {
-      return this.$el.removeClass('menu-animation');
+    MainMenu.prototype.showConfig = function() {
+      return this.$el.removeClass('menu-intro-animation').addClass('menu-outro-animation');
     };
 
     return MainMenu;

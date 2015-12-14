@@ -1,0 +1,81 @@
+@import 'mixin';
+
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes expand {
+  from {
+    min-width: 0;
+    min-height: 0;
+  }
+  to {
+    min-width: 800px;
+    min-height: 100%;
+  }
+}
+
+@keyframes go-up {
+  to {
+    margin-top: 0;
+    padding-top: 4em;
+    top: 0;
+  }
+}
+
+$animation-iteration: 1;
+$animation-fill: forwards;
+
+$fadeout-animation-duration: 400ms;
+$fadeout-animation-delay: 0;
+$fadeout-animation-name: fadeout;
+$fadeout-animation-timing: linear;
+
+$width-animation-duration: 600ms;
+$width-animation-timing: linear;
+$width-animation-name: expand;
+$width-animation-delay: 0;
+
+$go-up-animation-duration: 500ms;
+$go-up-animation-timing: linear;
+$go-up-animation-name: go-up;
+$go-up-animation-delay: 0;
+
+#main-menu.menu-outro-animation {
+  cursor: default;
+  pointer-events: none;
+  height: 100%;
+  padding-bottom: 8em;
+
+  @include animation-fill($animation-fill);
+  @include animation-iteration($animation-iteration);
+  @include animation-duration($go-up-animation-duration);
+  @include animation-timing($go-up-animation-timing);
+  @include animation-name($go-up-animation-name);
+  @include animation-delay($go-up-animation-delay);
+
+
+  #actions, #actions-fadein {
+    @include animation-fill($animation-fill);
+    @include animation-iteration($animation-iteration);
+  }
+  #actions-fadein {
+    @include animation-duration($fadeout-animation-duration);
+    @include animation-timing($fadeout-animation-timing);
+    @include animation-name($fadeout-animation-name);
+    @include animation-delay($fadeout-animation-delay);
+  }
+  #actions {
+    max-width: 90%;
+    min-width: 800px;
+    @include animation-duration($width-animation-duration);
+    @include animation-timing($width-animation-timing);
+    @include animation-name($width-animation-name);
+    @include animation-delay($width-animation-delay);
+  }
+}

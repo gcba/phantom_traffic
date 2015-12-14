@@ -1,6 +1,6 @@
 class Sputnik.MainMenu extends Backbone.View
   id: 'main-menu'
-  className: 'menu-animation'
+  className: 'menu-intro-animation'
   events:
     'click #menu-config': 'showConfig'
 
@@ -10,5 +10,5 @@ class Sputnik.MainMenu extends Backbone.View
   render: ->
     @$el.html(@template())
 
-  showConfig: (e) =>
-    @$el.removeClass('menu-animation')
+  showConfig: =>
+    @$el.removeClass('menu-intro-animation').addClass('menu-outro-animation')

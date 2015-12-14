@@ -112,7 +112,7 @@
 
   &.fall {
     opacity: 0;
-    @include animation-duration(1s);
+    @include animation-duration(700ms);
     @include animation-iteration(1);
     @include animation-name(login-fall);
     @include animation-timing(ease-out);
