@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 import os
 from confs import configs
+from confs import server_conf
 
 app = Flask(
     __name__,
@@ -8,6 +9,10 @@ app = Flask(
     static_folder='../web/static'
 )
 cities = []
+
+
+def start_server():
+    app.run(host=server_conf.server_ip, port=int(server_conf.server_port))
 
 
 @app.route('/index')
@@ -41,6 +46,7 @@ def existCity(city):
 @app.route('/status/<city>')
 def status(username=None, city=None):
     return 'TODO'
+
 
 @app.route('/login', methods=['POST'])
 def login():

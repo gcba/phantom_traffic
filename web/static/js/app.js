@@ -45,22 +45,20 @@
     App.prototype.renderLogo = function() {
       this.$el.html('');
       this.logo.render();
-      return this.$el.append(this.logo.el);
-    };
-
-    App.prototype.renderLogin = function() {
-      this.$el.html('');
       this.login.render();
       this.disclaimer.render();
       this.$el.append(this.login.el);
-      return this.$el.append(this.disclaimer.el);
+      this.$el.append(this.disclaimer.el);
+      return this.$el.append(this.logo.el);
     };
 
     App.prototype.renderMainApp = function() {
       this.$el.html('');
       this.header.render();
       this.mainMenu.render();
-      this.disclaimer.render();
+      this.disclaimer.render({
+        fadein: false
+      });
       this.$el.append(this.header.el);
       this.$el.append(this.mainMenu.el);
       return this.$el.append(this.disclaimer.el);
@@ -83,8 +81,14 @@
       return this.template = Sputnik.loadTemplate('disclaimer');
     };
 
-    Disclaimer.prototype.render = function() {
-      return this.$el.html(this.template());
+    Disclaimer.prototype.render = function(options) {
+      if (options == null) {
+        options = {
+          fadein: true
+        };
+      }
+      this.$el.html(this.template());
+      return this.$el.toggleClass('fadein', options.fadein);
     };
 
     return Disclaimer;
@@ -136,8 +140,19 @@
       return this.template = Sputnik.loadTemplate('login');
     };
 
-    Login.prototype.render = function() {
-      return this.$el.html(this.template());
+    Login.prototype.render = function(fall) {
+      if (fall == null) {
+        fall = true;
+      }
+      this.$el.html(this.template());
+      if (fall) {
+        this.$el.addClass('fall');
+        return this.$el.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', (function(_this) {
+          return function() {
+            return _this.$el.removeClass('fall');
+          };
+        })(this));
+      }
     };
 
     Login.prototype.onKeyPress = function(e) {
@@ -181,27 +196,6 @@
 
   })(Backbone.View);
 
-  Sputnik.MainMenu = (function(superClass) {
-    extend(MainMenu, superClass);
-
-    function MainMenu() {
-      return MainMenu.__super__.constructor.apply(this, arguments);
-    }
-
-    MainMenu.prototype.id = 'main-menu';
-
-    MainMenu.prototype.initialize = function() {
-      return this.template = Sputnik.loadTemplate('mainMenu');
-    };
-
-    MainMenu.prototype.render = function() {
-      return this.$el.html(this.template());
-    };
-
-    return MainMenu;
-
-  })(Backbone.View);
-
   Sputnik.Logo = (function(superClass) {
     extend(Logo, superClass);
 
@@ -220,6 +214,38 @@
     };
 
     return Logo;
+
+  })(Backbone.View);
+
+  Sputnik.MainMenu = (function(superClass) {
+    extend(MainMenu, superClass);
+
+    function MainMenu() {
+      this.showConfig = bind(this.showConfig, this);
+      return MainMenu.__super__.constructor.apply(this, arguments);
+    }
+
+    MainMenu.prototype.id = 'main-menu';
+
+    MainMenu.prototype.className = 'menu-intro-animation';
+
+    MainMenu.prototype.events = {
+      'click #menu-config': 'showConfig'
+    };
+
+    MainMenu.prototype.initialize = function() {
+      return this.template = Sputnik.loadTemplate('mainMenu');
+    };
+
+    MainMenu.prototype.render = function() {
+      return this.$el.html(this.template());
+    };
+
+    MainMenu.prototype.showConfig = function() {
+      return this.$el.removeClass('menu-intro-animation').addClass('menu-outro-animation');
+    };
+
+    return MainMenu;
 
   })(Backbone.View);
 

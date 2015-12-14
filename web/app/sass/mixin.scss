@@ -1,0 +1,48 @@
+@mixin animation-duration($duration) {
+  -o-animation-duration: $duration;
+  -moz-animation-duration: $duration;
+  -webkit-animation-duration: $duration;
+  animation-duration: $duration;
+}
+
+@mixin animation-iteration($iteration) {
+  -o-animation-iteration-count: $iteration;
+  -moz-animation-iteration-count: $iteration;
+  -webkit-animation-iteration-count: $iteration;
+  animation-iteration-count: $iteration;
+}
+
+@mixin animation-timing($timing) {
+  -o-animation-timing-function: $timing;
+  -moz-animation-timing-function: $timing;
+  -webkit-animation-timing-function: $timing;
+  animation-timing-function: $timing;
+}
+
+@mixin animation-fill($fill) {
+  -webkit-animation-fill-mode: $fill;
+  -moz-animation-fill-mode: $fill;
+  -o-animation-fill-mode: $fill;
+  animation-fill-mode: $fill;
+}
+
+@mixin animation-name($name) {
+  -o-animation-name: $name;
+  -moz-animation-name: $name;
+  -webkit-animation-name: $name;
+  animation-name: $name;
+}
+
+@mixin animation-delay($delay) {
+  -o-animation-delay: $delay;
+  -moz-animation-delay: $delay;
+  -webkit-animation-delay: $delay;
+  animation-delay: $delay;
+}
+
+@mixin blur($amount) {
+  -webkit-filter: blur($amount);
+  -moz-filter: blur($amount);
+  -o-filter: blur($amount);
+  filter: blur($amount);
+}

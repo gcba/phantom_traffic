@@ -8,8 +8,13 @@ class Sputnik.Login extends Backbone.View
   initialize: ->
     @template = Sputnik.loadTemplate('login')
 
-  render: ->
+  render: (fall=true) ->
     @$el.html(@template())
+    if fall
+      @$el.addClass('fall')
+      @$el.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', =>
+        @$el.removeClass('fall')
+      )
 
   onKeyPress: (e) =>
     code = e.keyCode || e.which

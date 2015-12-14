@@ -1,0 +1,58 @@
+@import 'mixin';
+
+#main-menu {
+  $menu-height: 300px;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  margin-top: -$menu-height/2;
+  #actions {
+    background: rgba(0, 0, 0, 0.5);
+    display: inline-block;
+    padding: 1em 3em;
+    color: #ccc;
+    font-family: Lato, sans-serif;
+    position: relative;
+
+    $border-radius: 20px;
+    -webkit-border-bottom-left-radius: $border-radius;
+    -webkit-border-bottom-right-radius: $border-radius;
+    -moz-border-radius-bottomleft: $border-radius;
+    -moz-border-radius-bottomright: $border-radius;
+    border-bottom-left-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+
+    #border-top {
+      width: 100%;
+      height: 5px;
+      background: #51E2C6;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 10px;
+    }
+
+    #actions-fadein {
+      img {
+        margin: 0 0.8em;
+        cursor: pointer;
+      }
+      #actions-title {
+        cursor: default;
+        font-size: 1.5em;
+        margin-bottom: 0.8em;
+      }
+      #bottom-legend {
+        cursor: default;
+        text-align: right;
+        margin-top: 1em;
+        color: #888;
+      }
+    }
+  }
+}
+
+
+@import 'main_menu_intro';
+@import 'main_menu_outro';

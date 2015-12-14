@@ -1,3 +1,6 @@
+@import 'mixin';
+@import 'logo';
+
 #footer {
   font-family: Lato, sans-serif;
   font-weight: 400;
@@ -13,5 +16,25 @@
   }
   #copyright {
     color: #00efbf;
+  }
+
+  &.fadein {
+    opacity: 0;
+    @include animation-duration(1s);
+    @include animation-iteration(1);
+    @include animation-name(disclaimer-fadein);
+    @include animation-timing(linear);
+    @include animation-fill(forwards);
+    @include animation-delay($logo-fall-ended);
+  }
+}
+
+
+@keyframes disclaimer-fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

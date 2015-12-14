@@ -29,24 +29,21 @@ class Sputnik.App extends Backbone.View
 
   renderLogo: ->
     @$el.html('')
+
     @logo.render()
-    @$el.append(@logo.el)
-
-  renderLogin: ->
-    @$el.html('')
-
     @login.render()
     @disclaimer.render()
 
     @$el.append(@login.el)
     @$el.append(@disclaimer.el)
+    @$el.append(@logo.el)
 
   renderMainApp: ->
     @$el.html('')
 
     @header.render()
     @mainMenu.render()
-    @disclaimer.render()
+    @disclaimer.render(fadein: false)
 
     @$el.append(@header.el)
     @$el.append(@mainMenu.el)

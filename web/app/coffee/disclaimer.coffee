@@ -4,5 +4,6 @@ class Sputnik.Disclaimer extends Backbone.View
   initialize: ->
     @template = Sputnik.loadTemplate('disclaimer')
 
-  render: ->
+  render: (options={fadein:true}) ->
     @$el.html(@template())
+    @$el.toggleClass('fadein', options.fadein)

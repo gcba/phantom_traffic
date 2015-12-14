@@ -57,9 +57,19 @@ body {
   background: -moz-radial-gradient(10em 50%, rgba(19, 179, 147, 0.58), transparent);
   background: radial-gradient(10em 50%, rgba(19, 179, 147, 0.58), transparent); }
   #logo-container #logo {
-    display: inline-block; }
+    position: relative;
+    display: inline-block;
+    height: 20em;
+    width: 18.21429em; }
     #logo-container #logo img {
-      height: 20em; }
+      height: 20em;
+      opacity: 0;
+      position: absolute;
+      top: 0; }
+    #logo-container #logo #top-logo, #logo-container #logo #left-logo {
+      left: 0; }
+    #logo-container #logo #right-logo {
+      right: 0; }
     #logo-container #logo #legend-container {
       font-family: Lato, sans-serif;
       font-weight: 300;
@@ -70,6 +80,7 @@ body {
       width: 200em;
       margin-left: -100em; }
       #logo-container #logo #legend-container #legend {
+        opacity: 0;
         letter-spacing: 0;
         font-size: 2.2em;
         white-space: nowrap; }
@@ -90,7 +101,8 @@ body {
     -webkit-filter: blur(0px);
     -moz-filter: blur(0px);
     -o-filter: blur(0px);
-    filter: blur(0px); } }
+    filter: blur(0px);
+    opacity: 1; } }
 #legend {
   -o-animation-iteration-count: 1;
   -moz-animation-iteration-count: 1;
@@ -112,10 +124,351 @@ body {
   -moz-animation-name: legend-animation;
   -webkit-animation-name: legend-animation;
   animation-name: legend-animation;
-  -o-animation-delay: 0ms;
-  -moz-animation-delay: 0ms;
-  -webkit-animation-delay: 0ms;
-  animation-delay: 0ms; }
+  -o-animation-delay: 1s;
+  -moz-animation-delay: 1s;
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s; }
+
+@keyframes top-logo-animation {
+  0% {
+    opacity: 0;
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    filter: blur(10px);
+    top: -6.66667em; }
+  25% {
+    opacity: 1; }
+  50% {
+    top: 0; }
+  100% {
+    opacity: 1;
+    -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    -o-filter: blur(0px);
+    filter: blur(0px); } }
+@keyframes right-logo-animation {
+  0% {
+    opacity: 0;
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    filter: blur(10px);
+    top: 6.66667em;
+    right: -6.66667em; }
+  25% {
+    opacity: 1; }
+  50% {
+    top: 0;
+    right: 0; }
+  100% {
+    opacity: 1;
+    -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    -o-filter: blur(0px);
+    filter: blur(0px); } }
+@keyframes left-logo-animation {
+  0% {
+    opacity: 0;
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    filter: blur(10px);
+    top: 6.66667em;
+    left: -6.66667em; }
+  25% {
+    opacity: 1; }
+  50% {
+    top: 0;
+    left: 0; }
+  100% {
+    opacity: 1;
+    -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    -o-filter: blur(0px);
+    filter: blur(0px); } }
+#logo #top-logo, #logo #right-logo, #logo #left-logo {
+  -o-animation-iteration-count: 1;
+  -moz-animation-iteration-count: 1;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -o-animation-duration: 4s;
+  -moz-animation-duration: 4s;
+  -webkit-animation-duration: 4s;
+  animation-duration: 4s;
+  -o-animation-timing-function: ease-out;
+  -moz-animation-timing-function: ease-out;
+  -webkit-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+  -o-animation-delay: 1s;
+  -moz-animation-delay: 1s;
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s; }
+#logo #top-logo {
+  -o-animation-name: top-logo-animation;
+  -moz-animation-name: top-logo-animation;
+  -webkit-animation-name: top-logo-animation;
+  animation-name: top-logo-animation; }
+#logo #right-logo {
+  -o-animation-name: right-logo-animation;
+  -moz-animation-name: right-logo-animation;
+  -webkit-animation-name: right-logo-animation;
+  animation-name: right-logo-animation; }
+#logo #left-logo {
+  -o-animation-name: left-logo-animation;
+  -moz-animation-name: left-logo-animation;
+  -webkit-animation-name: left-logo-animation;
+  animation-name: left-logo-animation; }
+
+@keyframes logo-fall {
+  from {
+    top: 50%;
+    opacity: 1; }
+  to {
+    top: 100%;
+    opacity: 0; } }
+#logo-container {
+  -o-animation-name: logo-fall;
+  -moz-animation-name: logo-fall;
+  -webkit-animation-name: logo-fall;
+  animation-name: logo-fall;
+  -o-animation-delay: 5s;
+  -moz-animation-delay: 5s;
+  -webkit-animation-delay: 5s;
+  animation-delay: 5s;
+  -o-animation-duration: 1s;
+  -moz-animation-duration: 1s;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -o-animation-iteration-count: 1;
+  -moz-animation-iteration-count: 1;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  -o-animation-timing-function: ease-in;
+  -moz-animation-timing-function: ease-in;
+  -webkit-animation-timing-function: ease-in;
+  animation-timing-function: ease-in;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  animation-fill-mode: forwards; }
+
+#logo-container {
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin-top: -10em;
+  background: none;
+  background: -webkit-radial-gradient(10em 50%, rgba(19, 179, 147, 0.58), transparent);
+  background: -o-radial-gradient(10em 50%, rgba(19, 179, 147, 0.58), transparent);
+  background: -moz-radial-gradient(10em 50%, rgba(19, 179, 147, 0.58), transparent);
+  background: radial-gradient(10em 50%, rgba(19, 179, 147, 0.58), transparent); }
+  #logo-container #logo {
+    position: relative;
+    display: inline-block;
+    height: 20em;
+    width: 18.21429em; }
+    #logo-container #logo img {
+      height: 20em;
+      opacity: 0;
+      position: absolute;
+      top: 0; }
+    #logo-container #logo #top-logo, #logo-container #logo #left-logo {
+      left: 0; }
+    #logo-container #logo #right-logo {
+      right: 0; }
+    #logo-container #logo #legend-container {
+      font-family: Lato, sans-serif;
+      font-weight: 300;
+      color: #eee;
+      position: absolute;
+      left: 50%;
+      top: 20em;
+      width: 200em;
+      margin-left: -100em; }
+      #logo-container #logo #legend-container #legend {
+        opacity: 0;
+        letter-spacing: 0;
+        font-size: 2.2em;
+        white-space: nowrap; }
+
+@keyframes legend-animation {
+  0% {
+    letter-spacing: 3em;
+    opacity: 0;
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    filter: blur(10px); }
+  25% {
+    opacity: 1; }
+  50% {
+    letter-spacing: 0; }
+  100% {
+    -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    -o-filter: blur(0px);
+    filter: blur(0px);
+    opacity: 1; } }
+#legend {
+  -o-animation-iteration-count: 1;
+  -moz-animation-iteration-count: 1;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -o-animation-duration: 4s;
+  -moz-animation-duration: 4s;
+  -webkit-animation-duration: 4s;
+  animation-duration: 4s;
+  -o-animation-timing-function: ease-out;
+  -moz-animation-timing-function: ease-out;
+  -webkit-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+  -o-animation-name: legend-animation;
+  -moz-animation-name: legend-animation;
+  -webkit-animation-name: legend-animation;
+  animation-name: legend-animation;
+  -o-animation-delay: 1s;
+  -moz-animation-delay: 1s;
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s; }
+
+@keyframes top-logo-animation {
+  0% {
+    opacity: 0;
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    filter: blur(10px);
+    top: -6.66667em; }
+  25% {
+    opacity: 1; }
+  50% {
+    top: 0; }
+  100% {
+    opacity: 1;
+    -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    -o-filter: blur(0px);
+    filter: blur(0px); } }
+@keyframes right-logo-animation {
+  0% {
+    opacity: 0;
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    filter: blur(10px);
+    top: 6.66667em;
+    right: -6.66667em; }
+  25% {
+    opacity: 1; }
+  50% {
+    top: 0;
+    right: 0; }
+  100% {
+    opacity: 1;
+    -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    -o-filter: blur(0px);
+    filter: blur(0px); } }
+@keyframes left-logo-animation {
+  0% {
+    opacity: 0;
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    filter: blur(10px);
+    top: 6.66667em;
+    left: -6.66667em; }
+  25% {
+    opacity: 1; }
+  50% {
+    top: 0;
+    left: 0; }
+  100% {
+    opacity: 1;
+    -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    -o-filter: blur(0px);
+    filter: blur(0px); } }
+#logo #top-logo, #logo #right-logo, #logo #left-logo {
+  -o-animation-iteration-count: 1;
+  -moz-animation-iteration-count: 1;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -o-animation-duration: 4s;
+  -moz-animation-duration: 4s;
+  -webkit-animation-duration: 4s;
+  animation-duration: 4s;
+  -o-animation-timing-function: ease-out;
+  -moz-animation-timing-function: ease-out;
+  -webkit-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+  -o-animation-delay: 1s;
+  -moz-animation-delay: 1s;
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s; }
+#logo #top-logo {
+  -o-animation-name: top-logo-animation;
+  -moz-animation-name: top-logo-animation;
+  -webkit-animation-name: top-logo-animation;
+  animation-name: top-logo-animation; }
+#logo #right-logo {
+  -o-animation-name: right-logo-animation;
+  -moz-animation-name: right-logo-animation;
+  -webkit-animation-name: right-logo-animation;
+  animation-name: right-logo-animation; }
+#logo #left-logo {
+  -o-animation-name: left-logo-animation;
+  -moz-animation-name: left-logo-animation;
+  -webkit-animation-name: left-logo-animation;
+  animation-name: left-logo-animation; }
+
+@keyframes logo-fall {
+  from {
+    top: 50%;
+    opacity: 1; }
+  to {
+    top: 100%;
+    opacity: 0; } }
+#logo-container {
+  -o-animation-name: logo-fall;
+  -moz-animation-name: logo-fall;
+  -webkit-animation-name: logo-fall;
+  animation-name: logo-fall;
+  -o-animation-delay: 5s;
+  -moz-animation-delay: 5s;
+  -webkit-animation-delay: 5s;
+  animation-delay: 5s;
+  -o-animation-duration: 1s;
+  -moz-animation-duration: 1s;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -o-animation-iteration-count: 1;
+  -moz-animation-iteration-count: 1;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  -o-animation-timing-function: ease-in;
+  -moz-animation-timing-function: ease-in;
+  -webkit-animation-timing-function: ease-in;
+  animation-timing-function: ease-in;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  animation-fill-mode: forwards; }
 
 #wrap {
   position: absolute;
@@ -204,6 +557,252 @@ body {
         font-size: 2em;
         cursor: pointer;
         color: #51E2C6; }
+  #wrap.fall {
+    opacity: 0;
+    -o-animation-duration: 700ms;
+    -moz-animation-duration: 700ms;
+    -webkit-animation-duration: 700ms;
+    animation-duration: 700ms;
+    -o-animation-iteration-count: 1;
+    -moz-animation-iteration-count: 1;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+    -o-animation-name: login-fall;
+    -moz-animation-name: login-fall;
+    -webkit-animation-name: login-fall;
+    animation-name: login-fall;
+    -o-animation-timing-function: ease-out;
+    -moz-animation-timing-function: ease-out;
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -o-animation-delay: 5.5s;
+    -moz-animation-delay: 5.5s;
+    -webkit-animation-delay: 5.5s;
+    animation-delay: 5.5s; }
+
+@keyframes login-fall {
+  from {
+    opacity: 0;
+    top: 0; }
+  to {
+    opacity: 1;
+    top: 50%; } }
+#logo-container {
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin-top: -10em;
+  background: none;
+  background: -webkit-radial-gradient(10em 50%, rgba(19, 179, 147, 0.58), transparent);
+  background: -o-radial-gradient(10em 50%, rgba(19, 179, 147, 0.58), transparent);
+  background: -moz-radial-gradient(10em 50%, rgba(19, 179, 147, 0.58), transparent);
+  background: radial-gradient(10em 50%, rgba(19, 179, 147, 0.58), transparent); }
+  #logo-container #logo {
+    position: relative;
+    display: inline-block;
+    height: 20em;
+    width: 18.21429em; }
+    #logo-container #logo img {
+      height: 20em;
+      opacity: 0;
+      position: absolute;
+      top: 0; }
+    #logo-container #logo #top-logo, #logo-container #logo #left-logo {
+      left: 0; }
+    #logo-container #logo #right-logo {
+      right: 0; }
+    #logo-container #logo #legend-container {
+      font-family: Lato, sans-serif;
+      font-weight: 300;
+      color: #eee;
+      position: absolute;
+      left: 50%;
+      top: 20em;
+      width: 200em;
+      margin-left: -100em; }
+      #logo-container #logo #legend-container #legend {
+        opacity: 0;
+        letter-spacing: 0;
+        font-size: 2.2em;
+        white-space: nowrap; }
+
+@keyframes legend-animation {
+  0% {
+    letter-spacing: 3em;
+    opacity: 0;
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    filter: blur(10px); }
+  25% {
+    opacity: 1; }
+  50% {
+    letter-spacing: 0; }
+  100% {
+    -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    -o-filter: blur(0px);
+    filter: blur(0px);
+    opacity: 1; } }
+#legend {
+  -o-animation-iteration-count: 1;
+  -moz-animation-iteration-count: 1;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -o-animation-duration: 4s;
+  -moz-animation-duration: 4s;
+  -webkit-animation-duration: 4s;
+  animation-duration: 4s;
+  -o-animation-timing-function: ease-out;
+  -moz-animation-timing-function: ease-out;
+  -webkit-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+  -o-animation-name: legend-animation;
+  -moz-animation-name: legend-animation;
+  -webkit-animation-name: legend-animation;
+  animation-name: legend-animation;
+  -o-animation-delay: 1s;
+  -moz-animation-delay: 1s;
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s; }
+
+@keyframes top-logo-animation {
+  0% {
+    opacity: 0;
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    filter: blur(10px);
+    top: -6.66667em; }
+  25% {
+    opacity: 1; }
+  50% {
+    top: 0; }
+  100% {
+    opacity: 1;
+    -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    -o-filter: blur(0px);
+    filter: blur(0px); } }
+@keyframes right-logo-animation {
+  0% {
+    opacity: 0;
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    filter: blur(10px);
+    top: 6.66667em;
+    right: -6.66667em; }
+  25% {
+    opacity: 1; }
+  50% {
+    top: 0;
+    right: 0; }
+  100% {
+    opacity: 1;
+    -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    -o-filter: blur(0px);
+    filter: blur(0px); } }
+@keyframes left-logo-animation {
+  0% {
+    opacity: 0;
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    filter: blur(10px);
+    top: 6.66667em;
+    left: -6.66667em; }
+  25% {
+    opacity: 1; }
+  50% {
+    top: 0;
+    left: 0; }
+  100% {
+    opacity: 1;
+    -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    -o-filter: blur(0px);
+    filter: blur(0px); } }
+#logo #top-logo, #logo #right-logo, #logo #left-logo {
+  -o-animation-iteration-count: 1;
+  -moz-animation-iteration-count: 1;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -o-animation-duration: 4s;
+  -moz-animation-duration: 4s;
+  -webkit-animation-duration: 4s;
+  animation-duration: 4s;
+  -o-animation-timing-function: ease-out;
+  -moz-animation-timing-function: ease-out;
+  -webkit-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+  -o-animation-delay: 1s;
+  -moz-animation-delay: 1s;
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s; }
+#logo #top-logo {
+  -o-animation-name: top-logo-animation;
+  -moz-animation-name: top-logo-animation;
+  -webkit-animation-name: top-logo-animation;
+  animation-name: top-logo-animation; }
+#logo #right-logo {
+  -o-animation-name: right-logo-animation;
+  -moz-animation-name: right-logo-animation;
+  -webkit-animation-name: right-logo-animation;
+  animation-name: right-logo-animation; }
+#logo #left-logo {
+  -o-animation-name: left-logo-animation;
+  -moz-animation-name: left-logo-animation;
+  -webkit-animation-name: left-logo-animation;
+  animation-name: left-logo-animation; }
+
+@keyframes logo-fall {
+  from {
+    top: 50%;
+    opacity: 1; }
+  to {
+    top: 100%;
+    opacity: 0; } }
+#logo-container {
+  -o-animation-name: logo-fall;
+  -moz-animation-name: logo-fall;
+  -webkit-animation-name: logo-fall;
+  animation-name: logo-fall;
+  -o-animation-delay: 5s;
+  -moz-animation-delay: 5s;
+  -webkit-animation-delay: 5s;
+  animation-delay: 5s;
+  -o-animation-duration: 1s;
+  -moz-animation-duration: 1s;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -o-animation-iteration-count: 1;
+  -moz-animation-iteration-count: 1;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  -o-animation-timing-function: ease-in;
+  -moz-animation-timing-function: ease-in;
+  -webkit-animation-timing-function: ease-in;
+  animation-timing-function: ease-in;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  animation-fill-mode: forwards; }
 
 #footer {
   font-family: Lato, sans-serif;
@@ -219,9 +818,40 @@ body {
     color: #333333; }
   #footer #copyright {
     color: #00efbf; }
+  #footer.fadein {
+    opacity: 0;
+    -o-animation-duration: 1s;
+    -moz-animation-duration: 1s;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -o-animation-iteration-count: 1;
+    -moz-animation-iteration-count: 1;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+    -o-animation-name: disclaimer-fadein;
+    -moz-animation-name: disclaimer-fadein;
+    -webkit-animation-name: disclaimer-fadein;
+    animation-name: disclaimer-fadein;
+    -o-animation-timing-function: linear;
+    -moz-animation-timing-function: linear;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -o-animation-delay: 6s;
+    -moz-animation-delay: 6s;
+    -webkit-animation-delay: 6s;
+    animation-delay: 6s; }
 
+@keyframes disclaimer-fadein {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
 #header {
-  font-size: 1.7em;
+  font-size: 1.5em;
   width: 100%;
   background: #000;
   position: fixed;
@@ -289,8 +919,7 @@ body {
   #main-menu #actions {
     background: rgba(0, 0, 0, 0.5);
     display: inline-block;
-    max-height: 0;
-    padding: 0 3em;
+    padding: 1em 3em;
     color: #ccc;
     font-family: Lato, sans-serif;
     position: relative;
@@ -308,20 +937,18 @@ body {
       top: 0;
       left: 0;
       border-radius: 10px; }
-    #main-menu #actions #actions-fadein {
-      opacity: 0; }
-      #main-menu #actions #actions-fadein img {
-        margin: 0 0.8em;
-        cursor: pointer; }
-      #main-menu #actions #actions-fadein #actions-title {
-        cursor: default;
-        font-size: 1.5em;
-        margin-bottom: 0.8em; }
-      #main-menu #actions #actions-fadein #bottom-legend {
-        cursor: default;
-        text-align: right;
-        margin-top: 1em;
-        color: #888; }
+    #main-menu #actions #actions-fadein img {
+      margin: 0 0.8em;
+      cursor: pointer; }
+    #main-menu #actions #actions-fadein #actions-title {
+      cursor: default;
+      font-size: 1.5em;
+      margin-bottom: 0.8em; }
+    #main-menu #actions #actions-fadein #bottom-legend {
+      cursor: default;
+      text-align: right;
+      margin-top: 1em;
+      color: #888; }
 
 @keyframes open-horizontally {
   from {
@@ -342,7 +969,12 @@ body {
     opacity: 0; }
   to {
     opacity: 1; } }
-#main-menu #border-top, #main-menu #actions, #main-menu #actions-fadein {
+#main-menu.menu-intro-animation #actions {
+  max-height: 0;
+  padding: 0 3em; }
+  #main-menu.menu-intro-animation #actions #actions-fadein {
+    opacity: 0; }
+#main-menu.menu-intro-animation #border-top, #main-menu.menu-intro-animation #actions, #main-menu.menu-intro-animation #actions-fadein {
   -o-animation-iteration-count: 1;
   -moz-animation-iteration-count: 1;
   -webkit-animation-iteration-count: 1;
@@ -351,7 +983,7 @@ body {
   -moz-animation-fill-mode: forwards;
   -o-animation-fill-mode: forwards;
   animation-fill-mode: forwards; }
-#main-menu #border-top {
+#main-menu.menu-intro-animation #border-top {
   -o-animation-duration: 600ms;
   -moz-animation-duration: 600ms;
   -webkit-animation-duration: 600ms;
@@ -368,7 +1000,7 @@ body {
   -moz-animation-delay: 0ms;
   -webkit-animation-delay: 0ms;
   animation-delay: 0ms; }
-#main-menu #actions {
+#main-menu.menu-intro-animation #actions {
   -o-animation-duration: 700ms;
   -moz-animation-duration: 700ms;
   -webkit-animation-duration: 700ms;
@@ -385,7 +1017,7 @@ body {
   -moz-animation-delay: 600ms;
   -webkit-animation-delay: 600ms;
   animation-delay: 600ms; }
-#main-menu #actions-fadein {
+#main-menu.menu-intro-animation #actions-fadein {
   -o-animation-duration: 700ms;
   -moz-animation-duration: 700ms;
   -webkit-animation-duration: 700ms;
@@ -402,5 +1034,97 @@ body {
   -moz-animation-delay: 810ms;
   -webkit-animation-delay: 810ms;
   animation-delay: 810ms; }
+
+@keyframes fadeout {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0; } }
+@keyframes expand {
+  from {
+    min-width: 0;
+    min-height: 0; }
+  to {
+    min-width: 800px;
+    min-height: 100%; } }
+@keyframes go-up {
+  to {
+    margin-top: 0;
+    padding-top: 4em;
+    top: 0; } }
+#main-menu.menu-outro-animation {
+  cursor: default;
+  pointer-events: none;
+  height: 100%;
+  padding-bottom: 8em;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -o-animation-iteration-count: 1;
+  -moz-animation-iteration-count: 1;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  -o-animation-duration: 500ms;
+  -moz-animation-duration: 500ms;
+  -webkit-animation-duration: 500ms;
+  animation-duration: 500ms;
+  -o-animation-timing-function: linear;
+  -moz-animation-timing-function: linear;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -o-animation-name: go-up;
+  -moz-animation-name: go-up;
+  -webkit-animation-name: go-up;
+  animation-name: go-up;
+  -o-animation-delay: 0;
+  -moz-animation-delay: 0;
+  -webkit-animation-delay: 0;
+  animation-delay: 0; }
+  #main-menu.menu-outro-animation #actions, #main-menu.menu-outro-animation #actions-fadein {
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -o-animation-iteration-count: 1;
+    -moz-animation-iteration-count: 1;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1; }
+  #main-menu.menu-outro-animation #actions-fadein {
+    -o-animation-duration: 400ms;
+    -moz-animation-duration: 400ms;
+    -webkit-animation-duration: 400ms;
+    animation-duration: 400ms;
+    -o-animation-timing-function: linear;
+    -moz-animation-timing-function: linear;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -o-animation-name: fadeout;
+    -moz-animation-name: fadeout;
+    -webkit-animation-name: fadeout;
+    animation-name: fadeout;
+    -o-animation-delay: 0;
+    -moz-animation-delay: 0;
+    -webkit-animation-delay: 0;
+    animation-delay: 0; }
+  #main-menu.menu-outro-animation #actions {
+    max-width: 90%;
+    min-width: 800px;
+    -o-animation-duration: 600ms;
+    -moz-animation-duration: 600ms;
+    -webkit-animation-duration: 600ms;
+    animation-duration: 600ms;
+    -o-animation-timing-function: linear;
+    -moz-animation-timing-function: linear;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -o-animation-name: expand;
+    -moz-animation-name: expand;
+    -webkit-animation-name: expand;
+    animation-name: expand;
+    -o-animation-delay: 0;
+    -moz-animation-delay: 0;
+    -webkit-animation-delay: 0;
+    animation-delay: 0; }
 
 /*# sourceMappingURL=app.css.map */

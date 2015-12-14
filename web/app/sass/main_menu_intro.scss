@@ -1,0 +1,82 @@
+@import 'mixin';
+
+@keyframes open-horizontally {
+  from {
+    left: 50%;
+    width: 0;
+  }
+  to {
+    left: 0;
+    width: 100%;
+  }
+}
+
+@keyframes open-vertically {
+  from {
+    max-height: 0;
+    padding: 0 3em;
+  }
+  to {
+    max-height: 400px;
+    padding: 1em 3em;
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+$animation-iteration: 1;
+$animation-fill: forwards;
+
+$border-animation-duration: 600ms;
+$border-animation-delay: 0ms;
+$border-animation-timing: ease-out;
+$border-animation-name: open-horizontally;
+
+$vertical-animation-duration: 700ms;
+$vertical-animation-delay: $border-animation-duration;
+$vertical-animation-timing: cubic-bezier(0.25, 0, 0.82, 1);
+$vertical-animation-name: open-vertically;
+
+$fadein-animation-duration: 700ms;
+$fadein-animation-delay: $vertical-animation-delay + $vertical-animation-duration*0.3;
+$fadein-animation-timing: linear;
+$fadein-animation-name: fadein;
+
+#main-menu.menu-intro-animation {
+  #actions {
+    max-height: 0;
+    padding: 0 3em;
+    #actions-fadein {
+      opacity: 0;
+    }
+  }
+  #border-top, #actions, #actions-fadein {
+    @include animation-iteration($animation-iteration);
+    @include animation-fill($animation-fill);
+  }
+  #border-top {
+    @include animation-duration($border-animation-duration);
+    @include animation-timing($border-animation-timing);
+    @include animation-name($border-animation-name);
+    @include animation-delay($border-animation-delay);
+  }
+  #actions {
+    @include animation-duration($vertical-animation-duration);
+    @include animation-timing($vertical-animation-timing);
+    @include animation-name($vertical-animation-name);
+    @include animation-delay($vertical-animation-delay);
+  }
+  #actions-fadein {
+    @include animation-duration($fadein-animation-duration);
+    @include animation-timing($fadein-animation-timing);
+    @include animation-name($fadein-animation-name);
+    @include animation-delay($fadein-animation-delay);
+  }
+}
