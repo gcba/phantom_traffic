@@ -39,3 +39,10 @@
   -webkit-animation-delay: $delay;
   animation-delay: $delay;
 }
+
+@mixin blur($amount) {
+  -webkit-filter: blur($amount);
+  -moz-filter: blur($amount);
+  -o-filter: blur($amount);
+  filter: blur($amount);
+}

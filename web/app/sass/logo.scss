@@ -59,11 +59,7 @@ $logo-height: 20em;
   0% {
     letter-spacing: 3em;
     opacity: 0;
-    $blur: 10px;
-    -webkit-filter: blur($blur);
-    -moz-filter: blur($blur);
-    -o-filter: blur($blur);
-    filter: blur($blur);
+    @include blur(10px);
   }
   25% {
     opacity: 1;
@@ -72,39 +68,29 @@ $logo-height: 20em;
     letter-spacing: 0;
   }
   100% {
-    -webkit-filter: blur(0px);
-    -moz-filter: blur(0px);
-    -o-filter: blur(0px);
-    filter: blur(0px);
+    @include blur(0px);
     opacity: 1;
   }
 }
 
 $animation-iteration: 1;
 $animation-fill: forwards;
-
-$legend-animation-duration: 4s;
-$legend-animation-delay: 1s;
-$legend-animation-timing: cubic-bezier(0.4, 0, 1, 1);
-$legend-animation-name: legend-animation;
+$animation-duration: 4s;
 
 #legend {
   @include animation-iteration($animation-iteration);
   @include animation-fill($animation-fill);
-  @include animation-duration($legend-animation-duration);
-  @include animation-timing($legend-animation-timing);
-  @include animation-name($legend-animation-name);
-  @include animation-delay($legend-animation-delay);
+  @include animation-duration($animation-duration);
+  @include animation-timing(ease-out);
+  @include animation-name(legend-animation);
+  @include animation-delay(1s);
 }
 
 $logo-blur: 10px;
 @keyframes top-logo-animation {
   0% {
     opacity: 0;
-    -webkit-filter: blur($logo-blur);
-    -moz-filter: blur($logo-blur);
-    -o-filter: blur($logo-blur);
-    filter: blur($logo-blur);
+    @include blur($logo-blur);
     top: -$logo-height/3;
   }
   25% {
@@ -115,20 +101,14 @@ $logo-blur: 10px;
   }
   100% {
     opacity: 1;
-    -webkit-filter: blur(0px);
-    -moz-filter: blur(0px);
-    -o-filter: blur(0px);
-    filter: blur(0px);
+    @include blur(0px);
   }
 }
 
 @keyframes right-logo-animation {
   0% {
     opacity: 0;
-    -webkit-filter: blur($logo-blur);
-    -moz-filter: blur($logo-blur);
-    -o-filter: blur($logo-blur);
-    filter: blur($logo-blur);
+    @include blur($logo-blur);
     top: $logo-height/3;
     right: -$logo-height/3;
   }
@@ -141,20 +121,14 @@ $logo-blur: 10px;
   }
   100% {
     opacity: 1;
-    -webkit-filter: blur(0px);
-    -moz-filter: blur(0px);
-    -o-filter: blur(0px);
-    filter: blur(0px);
+    @include blur(0px);
   }
 }
 
 @keyframes left-logo-animation {
   0% {
     opacity: 0;
-    -webkit-filter: blur($logo-blur);
-    -moz-filter: blur($logo-blur);
-    -o-filter: blur($logo-blur);
-    filter: blur($logo-blur);
+    @include blur($logo-blur);
     top: $logo-height/3;
     left: -$logo-height/3;
   }
@@ -167,36 +141,45 @@ $logo-blur: 10px;
   }
   100% {
     opacity: 1;
-    -webkit-filter: blur(0px);
-    -moz-filter: blur(0px);
-    -o-filter: blur(0px);
-    filter: blur(0px);
+    @include blur(0px);
   }
 }
-
-
-$logo-animation-duration: 4s;
-$logo-animation-timing: ease-out;
-$logo-animation-delay: 1s;
-$top-logo-animation-name: top-logo-animation;
-$right-logo-animation-name: right-logo-animation;
-$left-logo-animation-name: left-logo-animation;
 
 #logo {
   #top-logo, #right-logo, #left-logo {
     @include animation-iteration($animation-iteration);
     @include animation-fill($animation-fill);
-    @include animation-duration($logo-animation-duration);
-    @include animation-timing($logo-animation-timing);
-    @include animation-delay($logo-animation-delay);
+    @include animation-duration($animation-duration);
+    @include animation-timing(ease-out);
+    @include animation-delay(1s);
   }
   #top-logo {
-    @include animation-name($top-logo-animation-name);
+    @include animation-name(top-logo-animation);
   }
   #right-logo {
-    @include animation-name($right-logo-animation-name);
+    @include animation-name(right-logo-animation);
   }
   #left-logo {
-    @include animation-name($left-logo-animation-name);
+    @include animation-name(left-logo-animation);
   }
+}
+
+@keyframes logo-fall {
+  from {
+    top: 50%;
+    opacity: 1;
+  }
+  to {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+#logo-container {
+  @include animation-name(logo-fall);
+  @include animation-delay($animation-duration + 1s);
+  @include animation-duration(1s);
+  @include animation-iteration(1);
+  @include animation-timing(ease-in);
+  @include animation-fill(forwards);
 }

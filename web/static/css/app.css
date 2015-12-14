@@ -116,10 +116,10 @@ body {
   -moz-animation-duration: 4s;
   -webkit-animation-duration: 4s;
   animation-duration: 4s;
-  -o-animation-timing-function: cubic-bezier(0.4, 0, 1, 1);
-  -moz-animation-timing-function: cubic-bezier(0.4, 0, 1, 1);
-  -webkit-animation-timing-function: cubic-bezier(0.4, 0, 1, 1);
-  animation-timing-function: cubic-bezier(0.4, 0, 1, 1);
+  -o-animation-timing-function: ease-out;
+  -moz-animation-timing-function: ease-out;
+  -webkit-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
   -o-animation-name: legend-animation;
   -moz-animation-name: legend-animation;
   -webkit-animation-name: legend-animation;
@@ -223,6 +223,39 @@ body {
   -moz-animation-name: left-logo-animation;
   -webkit-animation-name: left-logo-animation;
   animation-name: left-logo-animation; }
+
+@keyframes logo-fall {
+  from {
+    top: 50%;
+    opacity: 1; }
+  to {
+    top: 100%;
+    opacity: 0; } }
+#logo-container {
+  -o-animation-name: logo-fall;
+  -moz-animation-name: logo-fall;
+  -webkit-animation-name: logo-fall;
+  animation-name: logo-fall;
+  -o-animation-delay: 5s;
+  -moz-animation-delay: 5s;
+  -webkit-animation-delay: 5s;
+  animation-delay: 5s;
+  -o-animation-duration: 1s;
+  -moz-animation-duration: 1s;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -o-animation-iteration-count: 1;
+  -moz-animation-iteration-count: 1;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  -o-animation-timing-function: ease-in;
+  -moz-animation-timing-function: ease-in;
+  -webkit-animation-timing-function: ease-in;
+  animation-timing-function: ease-in;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  animation-fill-mode: forwards; }
 
 #wrap {
   position: absolute;
