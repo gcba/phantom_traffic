@@ -1,3 +1,5 @@
+@import 'mixin';
+
 #main-menu {
   $menu-height: 300px;
   position: absolute;
@@ -104,78 +106,25 @@ $fadein-animation-name: fadein;
 
 #main-menu {
   #border-top, #actions, #actions-fadein {
-    -o-animation-iteration-count: $animation-iteration;
-    -moz-animation-iteration-count: $animation-iteration;
-    -webkit-animation-iteration-count: $animation-iteration;
-    animation-iteration-count: $animation-iteration;
-
-    -webkit-animation-fill-mode: $animation-fill;
-    -moz-animation-fill-mode: $animation-fill;
-    -o-animation-fill-mode: $animation-fill;
-    animation-fill-mode: $animation-fill;
+    @include animation-iteration($animation-iteration);
+    @include animation-fill($animation-fill);
   }
   #border-top {
-    -o-animation-duration: $border-animation-duration;
-    -moz-animation-duration: $border-animation-duration;
-    -webkit-animation-duration: $border-animation-duration;
-    animation-duration: $border-animation-duration;
-
-    -o-animation-timing-function: $border-animation-timing;
-    -moz-animation-timing-function: $border-animation-timing;
-    -webkit-animation-timing-function: $border-animation-timing;
-    animation-timing-function: $border-animation-timing;
-
-    -o-animation-name: $border-animation-name;
-    -moz-animation-name: $border-animation-name;
-    -webkit-animation-name: $border-animation-name;
-    animation-name: $border-animation-name;
-
-    -o-animation-delay: $border-animation-delay;
-    -moz-animation-delay: $border-animation-delay;
-    -webkit-animation-delay: $border-animation-delay;
-    animation-delay: $border-animation-delay;
+    @include animation-duration($border-animation-duration);
+    @include animation-timing($border-animation-timing);
+    @include animation-name($border-animation-name);
+    @include animation-delay($border-animation-delay);
   }
   #actions {
-    -o-animation-duration: $vertical-animation-duration;
-    -moz-animation-duration: $vertical-animation-duration;
-    -webkit-animation-duration: $vertical-animation-duration;
-    animation-duration: $vertical-animation-duration;
-
-    -o-animation-timing-function: $vertical-animation-timing;
-    -moz-animation-timing-function: $vertical-animation-timing;
-    -webkit-animation-timing-function: $vertical-animation-timing;
-    animation-timing-function: $vertical-animation-timing;
-
-    -o-animation-name: $vertical-animation-name;
-    -moz-animation-name: $vertical-animation-name;
-    -webkit-animation-name: $vertical-animation-name;
-    animation-name: $vertical-animation-name;
-
-    -o-animation-delay: $vertical-animation-delay;
-    -moz-animation-delay: $vertical-animation-delay;
-    -webkit-animation-delay: $vertical-animation-delay;
-    animation-delay: $vertical-animation-delay;
+    @include animation-duration($vertical-animation-duration);
+    @include animation-timing($vertical-animation-timing);
+    @include animation-name($vertical-animation-name);
+    @include animation-delay($vertical-animation-delay);
   }
   #actions-fadein {
-    -o-animation-duration: $fadein-animation-duration;
-    -moz-animation-duration: $fadein-animation-duration;
-    -webkit-animation-duration: $fadein-animation-duration;
-    animation-duration: $fadein-animation-duration;
-
-    -o-animation-timing-function: $fadein-animation-timing;
-    -moz-animation-timing-function: $fadein-animation-timing;
-    -webkit-animation-timing-function: $fadein-animation-timing;
-    animation-timing-function: $fadein-animation-timing;
-
-    -o-animation-name: $fadein-animation-name;
-    -moz-animation-name: $fadein-animation-name;
-    -webkit-animation-name: $fadein-animation-name;
-    animation-name: $fadein-animation-name;
-
-    -o-animation-delay: $fadein-animation-delay;
-    -moz-animation-delay: $fadein-animation-delay;
-    -webkit-animation-delay: $fadein-animation-delay;
-    animation-delay: $fadein-animation-delay;
-
+    @include animation-duration($fadein-animation-duration);
+    @include animation-timing($fadein-animation-timing);
+    @include animation-name($fadein-animation-name);
+    @include animation-delay($fadein-animation-delay);
   }
 }

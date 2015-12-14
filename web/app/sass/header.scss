@@ -1,3 +1,5 @@
+@import 'mixin';
+
 #header {
   font-size: 1.7em;
   width: 100%;
@@ -6,21 +8,9 @@
   top: 0;
   left: 0;
 
-  $animation-duration: 400ms;
-  $animation-iteration: 1;
-  $animation-timing: linear;
-  -o-animation-duration: $animation-duration;
-  -moz-animation-duration: $animation-duration;
-  -webkit-animation-duration: $animation-duration;
-  animation-duration: $animation-duration;
-  -o-animation-iteration-count: $animation-iteration;
-  -moz-animation-iteration-count: $animation-iteration;
-  -webkit-animation-iteration-count: $animation-iteration;
-  animation-iteration-count: $animation-iteration;
-  -o-animation-timing-function: $animation-timing;
-  -moz-animation-timing-function: $animation-timing;
-  -webkit-animation-timing-function: $animation-timing;
-  animation-timing-function: $animation-timing;
+  @include animation-duration(400ms);
+  @include animation-iteration(1);
+  @include animation-timing(linear);
 
   #logo {
     display: inline-block;

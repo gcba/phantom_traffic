@@ -1,3 +1,5 @@
+@import 'mixin';
+
 $logo-height: 20em;
 
 #logo-container {
@@ -87,35 +89,12 @@ $legend-animation-timing: cubic-bezier(0.4, 0, 1, 1);
 $legend-animation-name: legend-animation;
 
 #legend {
-  -o-animation-iteration-count: $animation-iteration;
-  -moz-animation-iteration-count: $animation-iteration;
-  -webkit-animation-iteration-count: $animation-iteration;
-  animation-iteration-count: $animation-iteration;
-
-  -webkit-animation-fill-mode: $animation-fill;
-  -moz-animation-fill-mode: $animation-fill;
-  -o-animation-fill-mode: $animation-fill;
-  animation-fill-mode: $animation-fill;
-
-  -o-animation-duration: $legend-animation-duration;
-  -moz-animation-duration: $legend-animation-duration;
-  -webkit-animation-duration: $legend-animation-duration;
-  animation-duration: $legend-animation-duration;
-
-  -o-animation-timing-function: $legend-animation-timing;
-  -moz-animation-timing-function: $legend-animation-timing;
-  -webkit-animation-timing-function: $legend-animation-timing;
-  animation-timing-function: $legend-animation-timing;
-
-  -o-animation-name: $legend-animation-name;
-  -moz-animation-name: $legend-animation-name;
-  -webkit-animation-name: $legend-animation-name;
-  animation-name: $legend-animation-name;
-
-  -o-animation-delay: $legend-animation-delay;
-  -moz-animation-delay: $legend-animation-delay;
-  -webkit-animation-delay: $legend-animation-delay;
-  animation-delay: $legend-animation-delay;
+  @include animation-iteration($animation-iteration);
+  @include animation-fill($animation-fill);
+  @include animation-duration($legend-animation-duration);
+  @include animation-timing($legend-animation-timing);
+  @include animation-name($legend-animation-name);
+  @include animation-delay($legend-animation-delay);
 }
 
 $logo-blur: 10px;
@@ -205,48 +184,19 @@ $left-logo-animation-name: left-logo-animation;
 
 #logo {
   #top-logo, #right-logo, #left-logo {
-    -o-animation-iteration-count: $animation-iteration;
-    -moz-animation-iteration-count: $animation-iteration;
-    -webkit-animation-iteration-count: $animation-iteration;
-    animation-iteration-count: $animation-iteration;
-
-    -webkit-animation-fill-mode: $animation-fill;
-    -moz-animation-fill-mode: $animation-fill;
-    -o-animation-fill-mode: $animation-fill;
-    animation-fill-mode: $animation-fill;
-    
-    -o-animation-duration: $logo-animation-duration;
-    -moz-animation-duration: $logo-animation-duration;
-    -webkit-animation-duration: $logo-animation-duration;
-    animation-duration: $logo-animation-duration;
-
-    -o-animation-timing-function: $logo-animation-timing;
-    -moz-animation-timing-function: $logo-animation-timing;
-    -webkit-animation-timing-function: $logo-animation-timing;
-    animation-timing-function: $logo-animation-timing;
-    
-    -o-animation-delay: $logo-animation-delay;
-    -moz-animation-delay: $logo-animation-delay;
-    -webkit-animation-delay: $logo-animation-delay;
-    animation-delay: $logo-animation-delay;
+    @include animation-iteration($animation-iteration);
+    @include animation-fill($animation-fill);
+    @include animation-duration($logo-animation-duration);
+    @include animation-timing($logo-animation-timing);
+    @include animation-delay($logo-animation-delay);
   }
-  
   #top-logo {
-    -o-animation-name: $top-logo-animation-name;
-    -moz-animation-name: $top-logo-animation-name;
-    -webkit-animation-name: $top-logo-animation-name;
-    animation-name: $top-logo-animation-name;
+    @include animation-name($top-logo-animation-name);
   }
   #right-logo {
-    -o-animation-name: $right-logo-animation-name;
-    -moz-animation-name: $right-logo-animation-name;
-    -webkit-animation-name: $right-logo-animation-name;
-    animation-name: $right-logo-animation-name;
+    @include animation-name($right-logo-animation-name);
   }
   #left-logo {
-    -o-animation-name: $left-logo-animation-name;
-    -moz-animation-name: $left-logo-animation-name;
-    -webkit-animation-name: $left-logo-animation-name;
-    animation-name: $left-logo-animation-name;
+    @include animation-name($left-logo-animation-name);
   }
 }

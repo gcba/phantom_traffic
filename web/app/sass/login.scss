@@ -1,3 +1,5 @@
+@import 'mixin';
+
 #wrap {
   position: absolute;
   width: 100%;
@@ -22,22 +24,9 @@
     $border-size: 0.4em;
     $circle-space: 2em;
 
-    $animation-duration: 1.5s;
-    $animation-iteration: 1;
-    $animation-timing: cubic-bezier(1, 0, 1, 1);
-
-    -o-animation-duration: $animation-duration;
-    -moz-animation-duration: $animation-duration;
-    -webkit-animation-duration: $animation-duration;
-    animation-duration: $animation-duration;
-    -o-animation-iteration-count: $animation-iteration;
-    -moz-animation-iteration-count: $animation-iteration;
-    -webkit-animation-iteration-count: $animation-iteration;
-    animation-iteration-count: $animation-iteration;
-    -o-animation-timing-function: $animation-timing;
-    -moz-animation-timing-function: $animation-timing;
-    -webkit-animation-timing-function: $animation-timing;
-    animation-timing-function: $animation-timing;
+    @include animation-duration(1.5s);
+    @include animation-iteration(1);
+    @include animation-timing(cubic-bezier(1, 0, 1, 1));
 
     #img-container {
       margin-bottom: 1em;
