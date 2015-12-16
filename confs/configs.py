@@ -13,3 +13,7 @@ plugins_confs = {
 }
 imgFolder = './IMG'
 hrdCodedTime = 120
+
+map_filter_ext = 'filter'
+maskFilterFolder = './libs/filters'
+maskTypes = []

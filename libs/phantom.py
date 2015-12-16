@@ -35,31 +35,54 @@ def load_plugins():
     configs.log.add('INFO: %d cities loaded!' % len(cities))
     return cities
 
-def build_mask(plugin_data):
-    plugin_folder = os.path.join('.', plugin_data['dest_folder'])
-    if not '{mask_name}.msk'.format(mask_name=plugin_data['name']) in os.listdir(plugin_folder):
-        configs.log.add('INFO: Building mask for: {city}'.format(city=plugin_data['name']))
-        try:
-            subprocess.Popen([
-                'phantomjs',
-                '--ignore-ssl-errors=true',
-                './libs/create_mask.js',
-                plugin_data['dest_folder'],
-                str(plugin_data['width']),
-                str(plugin_data['height']),
-                str(plugin_data['zoom']),
-                plugin_data['format'],
-                str(plugin_data['quality']),
-                str(plugin_data['lat']),
-                str(plugin_data['lon']),
-                plugin_data['name']])
-            configs.log.add('INFO: Mask for: {city} successful created :D '.format(city=plugin_data['name']))
-        except Exception as e:
-            configs.log.add('WARRING: Can\'t create the mask for {city}\t{error}'.format(city=plugin_data['name']), error=e)
 
+def load_map_filters():
+    mask_types = []
+    map_filter_folder = os.path.join('.',configs.maskFilterFolder)
+    for f in os.listdir(map_filter_folder):
+        if f.endswith('.filter'):
+            file_path = os.path.join(map_filter_folder, f)
+            try:
+              with open(file_path,'r') as ff:
+                  filter_cont = ff.readlines()
+            except Exception as e:
+                configs.log.add('FATAL ERROR: can\' read filter file {filter}'.format(filter=f))
+                exit()
+            nf = {
+              'name': f.split('.')[1],
+              'filter': str(filter_cont),
+            }
+            mask_types.append(nf)
+    return mask_types
+
+
+def build_mask_set(data_plugin):
+    for plugin in data_plugin:
+        maskTypes =  load_map_filters()
+        for mask in maskTypes:
+            if not '{mask_name}_{mask_type}.msk'.format(mask_name=plugin['name'], mask_type=mask['name']) in os.listdir(plugin['dest_folder']):
+                configs.log.add('INFO: Building masks \"{mask_type}\" for: {city}'.format(city=plugin['name'], mask_type=mask['name']))
+                try:
+                    subprocess.Popen([
+                    'phantomjs',
+                    '--ignore-ssl-errors=true',
+                    './libs/create_masks.js',
+                    plugin['dest_folder'],
+                    str(plugin['width']),
+                    str(plugin['height']),
+                    str(plugin['zoom']),
+                    plugin['format'],
+                    str(plugin['quality']),
+                    str(plugin['lat']),
+                    str(plugin['lon']),
+                    plugin['name'],
+                    mask['name']])                    
+                    configs.log.add('INFO: process Build Mask for: {city}, type:{mask_type} successful launched :D '.format(city=plugin['name'], mask_type=mask['name']))
+                except Exception as e:
+                    configs.log.add('WARNING: Can\'t create the mask({mask_type}) for {city}\n\t\t{error}'.format(city=plugin['name'], error=e, mask_type=mask['name']))            
+       
 def take_picts(cities):
     for city in cities:
-        build_mask(city)
         try:
             configs.log.add('INFO: Taking picts of %s' % city['name'])
             subprocess.Popen([
@@ -84,6 +107,7 @@ def main():
     while True:
         start_time = time.time()
         cities = load_plugins()
+        build_mask_set(cities)
         take_picts(cities)
         elapsed_time = time.time() - start_time
         if elapsed_time < configs.hrdCodedTime:
